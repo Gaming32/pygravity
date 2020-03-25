@@ -4,6 +4,7 @@ from Cython.Build import cythonize
 setuptools.setup(
     name = 'python-gravity',
     version = '0.1.0',
+    url = 'https://github.com/gaming32/pygravity',
     author = 'Gaming32',
     author_email = 'gaming32i64@gmail.com',
     license = 'License :: OSI Approved :: MIT License',
