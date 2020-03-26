@@ -3,7 +3,7 @@ from Cython.Build import cythonize
 
 setuptools.setup(
     name = 'python-gravity',
-    version = '0.1.0.1',
+    version = '0.2.0',
     url = 'https://github.com/gaming32/pygravity',
     author = 'Gaming32',
     author_email = 'gaming32i64@gmail.com',
@@ -13,8 +13,11 @@ setuptools.setup(
     long_description_content_type = 'text/markdown',
     packages = [
         'pygravity',
-        'pygravity.2d',
+        'pygravity.two_d',
     ],
-    ext_modules = cythonize('pygravity/math.pyx'),
+    ext_modules = (
+        cythonize('pygravity/math.pyx') +
+        cythonize('pygravity/two_d/vector.pyx')
+    ),
     zip_safe = False,
 )

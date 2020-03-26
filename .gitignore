@@ -2,3 +2,5 @@ build
 .eggs
 python_gravity.egg-info
 setup.cmd
+pygravity/*.pyd
+pygravity/*/*.pyd
