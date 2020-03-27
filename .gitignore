@@ -4,3 +4,5 @@ python_gravity.egg-info
 setup.cmd
 pygravity/*.pyd
 pygravity/*/*.pyd
+cythonize.cmd
+build_exts.cmd

@@ -5,7 +5,7 @@
     "distutils": {
         "name": "pygravity.math",
         "sources": [
-            "pygravity/math.pyx"
+            "C:\\Users\\josia\\MEGA\\Projects\\Programming Languages\\Python\\pygravity\\pygravity\\math.pyx"
         ]
     },
     "module_name": "pygravity.math"
@@ -21,7 +21,7 @@ END: Cython Metadata */
 #else
 #define CYTHON_ABI "0_29_15"
 #define CYTHON_HEX_VERSION 0x001D0FF0
-#define CYTHON_FUTURE_DIVISION 0
+#define CYTHON_FUTURE_DIVISION 1
 #include <stddef.h>
 #ifndef offsetof
   #define offsetof(type, member) ( (size_t) & ((type*)0) -> member )
@@ -1068,7 +1068,7 @@ static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_pygravity_math;
 static PyObject *__pyx_kp_s_pygravity_math_pyx;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_mass, float __pyx_v_distance); /* proto */
+static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_mass, double __pyx_v_distance); /* proto */
 static PyObject *__pyx_float_6_67430eneg_11;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_codeobj__2;
@@ -1077,7 +1077,7 @@ static PyObject *__pyx_codeobj__2;
 /* "pygravity/math.pyx":3
  * gravitational_constant = 6.67430e-11
  * 
- * def acceleration_due_to_gravity(float mass, float distance):             # <<<<<<<<<<<<<<
+ * def acceleration_due_to_gravity(double mass, double distance):             # <<<<<<<<<<<<<<
  *     return (gravitational_constant * mass) / distance ** 2
  */
 
@@ -1085,8 +1085,8 @@ static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_pw_9pygravity_4math_1acceleration_due_to_gravity(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyMethodDef __pyx_mdef_9pygravity_4math_1acceleration_due_to_gravity = {"acceleration_due_to_gravity", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9pygravity_4math_1acceleration_due_to_gravity, METH_VARARGS|METH_KEYWORDS, 0};
 static PyObject *__pyx_pw_9pygravity_4math_1acceleration_due_to_gravity(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  float __pyx_v_mass;
-  float __pyx_v_distance;
+  double __pyx_v_mass;
+  double __pyx_v_distance;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("acceleration_due_to_gravity (wrapper)", 0);
@@ -1125,8 +1125,8 @@ static PyObject *__pyx_pw_9pygravity_4math_1acceleration_due_to_gravity(PyObject
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_mass = __pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_mass == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 3, __pyx_L3_error)
-    __pyx_v_distance = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_distance == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 3, __pyx_L3_error)
+    __pyx_v_mass = __pyx_PyFloat_AsDouble(values[0]); if (unlikely((__pyx_v_mass == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 3, __pyx_L3_error)
+    __pyx_v_distance = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_distance == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 3, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
@@ -1143,7 +1143,7 @@ static PyObject *__pyx_pw_9pygravity_4math_1acceleration_due_to_gravity(PyObject
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_mass, float __pyx_v_distance) {
+static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_mass, double __pyx_v_distance) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1153,7 +1153,7 @@ static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UN
 
   /* "pygravity/math.pyx":4
  * 
- * def acceleration_due_to_gravity(float mass, float distance):
+ * def acceleration_due_to_gravity(double mass, double distance):
  *     return (gravitational_constant * mass) / distance ** 2             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
@@ -1165,7 +1165,7 @@ static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UN
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(powf(__pyx_v_distance, 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(pow(__pyx_v_distance, 2.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1178,7 +1178,7 @@ static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UN
   /* "pygravity/math.pyx":3
  * gravitational_constant = 6.67430e-11
  * 
- * def acceleration_due_to_gravity(float mass, float distance):             # <<<<<<<<<<<<<<
+ * def acceleration_due_to_gravity(double mass, double distance):             # <<<<<<<<<<<<<<
  *     return (gravitational_constant * mass) / distance ** 2
  */
 
@@ -1264,7 +1264,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "pygravity/math.pyx":3
  * gravitational_constant = 6.67430e-11
  * 
- * def acceleration_due_to_gravity(float mass, float distance):             # <<<<<<<<<<<<<<
+ * def acceleration_due_to_gravity(double mass, double distance):             # <<<<<<<<<<<<<<
  *     return (gravitational_constant * mass) / distance ** 2
  */
   __pyx_tuple_ = PyTuple_Pack(2, __pyx_n_s_mass, __pyx_n_s_distance); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 3, __pyx_L1_error)
@@ -1550,14 +1550,14 @@ if (!__Pyx_RefNanny) {
   /* "pygravity/math.pyx":1
  * gravitational_constant = 6.67430e-11             # <<<<<<<<<<<<<<
  * 
- * def acceleration_due_to_gravity(float mass, float distance):
+ * def acceleration_due_to_gravity(double mass, double distance):
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_gravitational_constant, __pyx_float_6_67430eneg_11) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
 
   /* "pygravity/math.pyx":3
  * gravitational_constant = 6.67430e-11
  * 
- * def acceleration_due_to_gravity(float mass, float distance):             # <<<<<<<<<<<<<<
+ * def acceleration_due_to_gravity(double mass, double distance):             # <<<<<<<<<<<<<<
  *     return (gravitational_constant * mass) / distance ** 2
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9pygravity_4math_1acceleration_due_to_gravity, NULL, __pyx_n_s_pygravity_math); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
@@ -1568,7 +1568,7 @@ if (!__Pyx_RefNanny) {
   /* "pygravity/math.pyx":1
  * gravitational_constant = 6.67430e-11             # <<<<<<<<<<<<<<
  * 
- * def acceleration_due_to_gravity(float mass, float distance):
+ * def acceleration_due_to_gravity(double mass, double distance):
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

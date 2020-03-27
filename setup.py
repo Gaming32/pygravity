@@ -1,9 +1,8 @@
 import setuptools
-from Cython.Build import cythonize
 
 setuptools.setup(
     name = 'python-gravity',
-    version = '0.2.0',
+    version = '0.3.0',
     url = 'https://github.com/gaming32/pygravity',
     author = 'Gaming32',
     author_email = 'gaming32i64@gmail.com',
@@ -13,11 +12,11 @@ setuptools.setup(
     long_description_content_type = 'text/markdown',
     packages = [
         'pygravity',
-        'pygravity.two_d',
+        'pygravity.twod',
     ],
-    ext_modules = (
-        cythonize('pygravity/math.pyx') +
-        cythonize('pygravity/two_d/vector.pyx')
-    ),
+    ext_modules = [
+        setuptools.Extension('pygravity.math', ['pygravity/math.c']),
+        setuptools.Extension('pygravity.twod.vector', ['pygravity/twod/vector.c']),
+    ],
     zip_safe = False,
 )
