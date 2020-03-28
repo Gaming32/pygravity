@@ -11,6 +11,7 @@ cdef double rad2deg(double x):
     return x * 180 / M_PI
 
 class Vector2:
+    __slots__ = ['x', 'y']
     def __init__(self, double x, double y):
         self.x = x
         self.y = y
@@ -23,7 +24,7 @@ class Vector2:
         return (self.x, self.y)
     def as_direction_magnitude(self):
         return (rad2deg(atan(self.y/self.x)), sqrt(self.x**2 + self.y**2))
-    def set(self, vector):
+    def update_to(self, vector):
         self.x = vector.x
         self.y = vector.y
 
@@ -59,6 +60,11 @@ class Vector2:
             return Vector2(self.x // other.x, self.y // other.y)
         else:
             return Vector2(self.x // other, self.y // other)
+    def __truediv__(self, other):
+        if isinstance(other, Vector2):
+            return Vector2(self.x / other.x, self.y / other.y)
+        else:
+            return Vector2(self.x / other, self.y / other)
     def __mod__(self, other):
         if isinstance(other, Vector2):
             return Vector2(self.x % other.x, self.y % other.y)
@@ -78,51 +84,12 @@ class Vector2:
     def __nonzero__(self):
         return bool(self.x) and bool(self.y)
 
-    def __iadd__(self, other):
-        self.x += other.x
-        self.y += other.y
-    def __isub__(self, other):
-        self.x -= other.x
-        self.y -= other.y
-    def __imul__(self, other):
-        if isinstance(other, Vector2):
-            self.x *= other.x
-            self.y *= other.y
-        else:
-            self.x *= other
-            self.y *= other
-    def __idiv__(self, other):
-        if isinstance(other, Vector2):
-            self.x /= other.x
-            self.y /= other.y
-        else:
-            self.x /= other
-            self.y /= other
-    def __ifloordiv__(self, other):
-        if isinstance(other, Vector2):
-            self.x //= other.x
-            self.y //= other.y
-        else:
-            self.x //= other
-            self.y //= other
-    def __imod__(self, other):
-        if isinstance(other, Vector2):
-            self.x %= other.x
-            self.y %= other.y
-        else:
-            self.x %= other
-            self.y %= other
-    def __ipow__(self, other):
-        if isinstance(other, Vector2):
-            self.x **= other.x
-            self.y **= other.y
-        else:
-            self.x **= other
-            self.y **= other
-
     def __len__(self):
         return 2
     def __getitem__(self, ix):
         return self.as_tuple[ix]
     def __contains__(self, value):
         return self.x == value or self.y == value
+
+
+__all__ = ['Vector2']
