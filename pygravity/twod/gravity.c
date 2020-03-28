@@ -1439,6 +1439,7 @@ static const char __pyx_k_y[] = "y";
 static const char __pyx_k__4[] = "(";
 static const char __pyx_k__5[] = ", ";
 static const char __pyx_k__6[] = ")";
+static const char __pyx_k_all[] = "__all__";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_len[] = "__len__";
 static const char __pyx_k_args[] = "args";
@@ -1501,12 +1502,15 @@ static const char __pyx_k_location_must_be_an_instance_of[] = "location must be 
 static const char __pyx_k_GravityContainer___repr___locals[] = "GravityContainer.__repr__.<locals>.genexpr";
 static const char __pyx_k_location_must_be_an_instance_of_2[] = "location must be an instance of GravityContainer";
 static PyObject *__pyx_n_s_GravityAcceptor;
+static PyObject *__pyx_n_u_GravityAcceptor;
 static PyObject *__pyx_n_s_GravityAcceptor___init;
 static PyObject *__pyx_n_s_GravityAcceptor___repr;
 static PyObject *__pyx_n_s_GravityCaster;
+static PyObject *__pyx_n_u_GravityCaster;
 static PyObject *__pyx_n_s_GravityCaster___init;
 static PyObject *__pyx_n_s_GravityCaster___repr;
 static PyObject *__pyx_n_s_GravityContainer;
+static PyObject *__pyx_n_u_GravityContainer;
 static PyObject *__pyx_n_s_GravityContainer___init;
 static PyObject *__pyx_n_s_GravityContainer___len;
 static PyObject *__pyx_n_s_GravityContainer___repr;
@@ -1523,6 +1527,7 @@ static PyObject *__pyx_kp_u__6;
 static PyObject *__pyx_n_s_acceleration_due_to_gravity;
 static PyObject *__pyx_n_s_add_caster;
 static PyObject *__pyx_n_s_add_casters;
+static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_caster;
@@ -3124,6 +3129,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___init__(C
  *         self.container = container
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.location, self.container)
+ * 
  */
 
 /* Python wrapper */
@@ -3154,6 +3160,8 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
  *         self.container = container
  *     def __repr__(self):
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.location, self.container)             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = PyTuple_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
@@ -3217,6 +3225,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
  *         self.container = container
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.location, self.container)
+ * 
  */
 
   /* function exit code */
@@ -3733,12 +3742,15 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_GravityAcceptor, __pyx_k_GravityAcceptor, sizeof(__pyx_k_GravityAcceptor), 0, 0, 1, 1},
+  {&__pyx_n_u_GravityAcceptor, __pyx_k_GravityAcceptor, sizeof(__pyx_k_GravityAcceptor), 0, 1, 0, 1},
   {&__pyx_n_s_GravityAcceptor___init, __pyx_k_GravityAcceptor___init, sizeof(__pyx_k_GravityAcceptor___init), 0, 0, 1, 1},
   {&__pyx_n_s_GravityAcceptor___repr, __pyx_k_GravityAcceptor___repr, sizeof(__pyx_k_GravityAcceptor___repr), 0, 0, 1, 1},
   {&__pyx_n_s_GravityCaster, __pyx_k_GravityCaster, sizeof(__pyx_k_GravityCaster), 0, 0, 1, 1},
+  {&__pyx_n_u_GravityCaster, __pyx_k_GravityCaster, sizeof(__pyx_k_GravityCaster), 0, 1, 0, 1},
   {&__pyx_n_s_GravityCaster___init, __pyx_k_GravityCaster___init, sizeof(__pyx_k_GravityCaster___init), 0, 0, 1, 1},
   {&__pyx_n_s_GravityCaster___repr, __pyx_k_GravityCaster___repr, sizeof(__pyx_k_GravityCaster___repr), 0, 0, 1, 1},
   {&__pyx_n_s_GravityContainer, __pyx_k_GravityContainer, sizeof(__pyx_k_GravityContainer), 0, 0, 1, 1},
+  {&__pyx_n_u_GravityContainer, __pyx_k_GravityContainer, sizeof(__pyx_k_GravityContainer), 0, 1, 0, 1},
   {&__pyx_n_s_GravityContainer___init, __pyx_k_GravityContainer___init, sizeof(__pyx_k_GravityContainer___init), 0, 0, 1, 1},
   {&__pyx_n_s_GravityContainer___len, __pyx_k_GravityContainer___len, sizeof(__pyx_k_GravityContainer___len), 0, 0, 1, 1},
   {&__pyx_n_s_GravityContainer___repr, __pyx_k_GravityContainer___repr, sizeof(__pyx_k_GravityContainer___repr), 0, 0, 1, 1},
@@ -3755,6 +3767,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_acceleration_due_to_gravity, __pyx_k_acceleration_due_to_gravity, sizeof(__pyx_k_acceleration_due_to_gravity), 0, 0, 1, 1},
   {&__pyx_n_s_add_caster, __pyx_k_add_caster, sizeof(__pyx_k_add_caster), 0, 0, 1, 1},
   {&__pyx_n_s_add_casters, __pyx_k_add_casters, sizeof(__pyx_k_add_casters), 0, 0, 1, 1},
+  {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
   {&__pyx_n_s_caster, __pyx_k_caster, sizeof(__pyx_k_caster), 0, 0, 1, 1},
@@ -3988,6 +4001,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         self.container = container
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.location, self.container)
+ * 
  */
   __pyx_tuple__28 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
@@ -4558,6 +4572,7 @@ if (!__Pyx_RefNanny) {
  *         self.container = container
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.location, self.container)
+ * 
  */
   __pyx_t_2 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9pygravity_4twod_7gravity_15GravityAcceptor_3__repr__, 0, __pyx_n_s_GravityAcceptor___repr, NULL, __pyx_n_s_pygravity_twod_gravity, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -4575,6 +4590,25 @@ if (!__Pyx_RefNanny) {
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_GravityAcceptor, __pyx_t_2) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "pygravity/twod/gravity.pyx":53
+ * 
+ * 
+ * __all__ = ['GravityContainer', 'GravityCaster', 'GravityAcceptor']             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_u_GravityContainer);
+  __Pyx_GIVEREF(__pyx_n_u_GravityContainer);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_u_GravityContainer);
+  __Pyx_INCREF(__pyx_n_u_GravityCaster);
+  __Pyx_GIVEREF(__pyx_n_u_GravityCaster);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_GravityCaster);
+  __Pyx_INCREF(__pyx_n_u_GravityAcceptor);
+  __Pyx_GIVEREF(__pyx_n_u_GravityAcceptor);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_u_GravityAcceptor);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "pygravity/twod/gravity.pyx":1
