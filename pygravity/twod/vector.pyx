@@ -11,7 +11,6 @@ cdef double rad2deg(double x):
     return x * 180 / M_PI
 
 class Vector2:
-    __slots__ = ['x', 'y']
     def __init__(self, double x, double y):
         self.x = x
         self.y = y
@@ -24,7 +23,7 @@ class Vector2:
         return (self.x, self.y)
     def as_direction_magnitude(self):
         return (rad2deg(atan(self.y/self.x)), sqrt(self.x**2 + self.y**2))
-    def update_to(self, vector):
+    def set_to(self, vector):
         self.x = vector.x
         self.y = vector.y
 
