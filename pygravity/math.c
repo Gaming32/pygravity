@@ -951,6 +951,9 @@ static PyObject *__Pyx__GetModuleGlobalName(PyObject *name, PY_UINT64_T *dict_ve
 static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name);
 #endif
 
+/* None.proto */
+static CYTHON_INLINE double __Pyx_mod_double(double, double);
+
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
@@ -1053,7 +1056,9 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_mass[] = "mass";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_angle[] = "angle";
 static const char __pyx_k_distance[] = "distance";
+static const char __pyx_k_invert_angle[] = "invert_angle";
 static const char __pyx_k_pygravity_math[] = "pygravity.math";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_pygravity_math_pyx[] = "pygravity\\math.pyx";
@@ -1062,10 +1067,12 @@ static const char __pyx_k_acceleration_due_to_gravity[] = "acceleration_due_to_g
 static PyObject *__pyx_n_s_acceleration_due_to_gravity;
 static PyObject *__pyx_n_u_acceleration_due_to_gravity;
 static PyObject *__pyx_n_s_all;
+static PyObject *__pyx_n_s_angle;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_distance;
 static PyObject *__pyx_n_s_gravitational_constant;
 static PyObject *__pyx_n_u_gravitational_constant;
+static PyObject *__pyx_n_s_invert_angle;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_mass;
 static PyObject *__pyx_n_s_name;
@@ -1073,9 +1080,12 @@ static PyObject *__pyx_n_s_pygravity_math;
 static PyObject *__pyx_kp_s_pygravity_math_pyx;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_mass, double __pyx_v_distance); /* proto */
+static PyObject *__pyx_pf_9pygravity_4math_2invert_angle(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_angle); /* proto */
 static PyObject *__pyx_float_6_67430eneg_11;
 static PyObject *__pyx_tuple_;
+static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_codeobj__2;
+static PyObject *__pyx_codeobj__4;
 /* Late includes */
 
 /* "pygravity/math.pyx":3
@@ -1161,7 +1171,7 @@ static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UN
  * def acceleration_due_to_gravity(double mass, double distance):
  *     return (gravitational_constant * mass) / distance ** 2             # <<<<<<<<<<<<<<
  * 
- * __all__ = ['gravitational_constant', 'acceleration_due_to_gravity']
+ * def invert_angle(double angle):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_gravitational_constant); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
@@ -1196,6 +1206,77 @@ static PyObject *__pyx_pf_9pygravity_4math_acceleration_due_to_gravity(CYTHON_UN
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("pygravity.math.acceleration_due_to_gravity", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "pygravity/math.pyx":6
+ *     return (gravitational_constant * mass) / distance ** 2
+ * 
+ * def invert_angle(double angle):             # <<<<<<<<<<<<<<
+ *     return (angle + 180) % 360
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9pygravity_4math_3invert_angle(PyObject *__pyx_self, PyObject *__pyx_arg_angle); /*proto*/
+static PyMethodDef __pyx_mdef_9pygravity_4math_3invert_angle = {"invert_angle", (PyCFunction)__pyx_pw_9pygravity_4math_3invert_angle, METH_O, 0};
+static PyObject *__pyx_pw_9pygravity_4math_3invert_angle(PyObject *__pyx_self, PyObject *__pyx_arg_angle) {
+  double __pyx_v_angle;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("invert_angle (wrapper)", 0);
+  assert(__pyx_arg_angle); {
+    __pyx_v_angle = __pyx_PyFloat_AsDouble(__pyx_arg_angle); if (unlikely((__pyx_v_angle == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 6, __pyx_L3_error)
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("pygravity.math.invert_angle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9pygravity_4math_2invert_angle(__pyx_self, ((double)__pyx_v_angle));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9pygravity_4math_2invert_angle(CYTHON_UNUSED PyObject *__pyx_self, double __pyx_v_angle) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("invert_angle", 0);
+
+  /* "pygravity/math.pyx":7
+ * 
+ * def invert_angle(double angle):
+ *     return (angle + 180) % 360             # <<<<<<<<<<<<<<
+ * 
+ * __all__ = ['gravitational_constant', 'acceleration_due_to_gravity']
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyFloat_FromDouble(__Pyx_mod_double((__pyx_v_angle + 180.0), 360.0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "pygravity/math.pyx":6
+ *     return (gravitational_constant * mass) / distance ** 2
+ * 
+ * def invert_angle(double angle):             # <<<<<<<<<<<<<<
+ *     return (angle + 180) % 360
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("pygravity.math.invert_angle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1252,10 +1333,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_acceleration_due_to_gravity, __pyx_k_acceleration_due_to_gravity, sizeof(__pyx_k_acceleration_due_to_gravity), 0, 0, 1, 1},
   {&__pyx_n_u_acceleration_due_to_gravity, __pyx_k_acceleration_due_to_gravity, sizeof(__pyx_k_acceleration_due_to_gravity), 0, 1, 0, 1},
   {&__pyx_n_s_all, __pyx_k_all, sizeof(__pyx_k_all), 0, 0, 1, 1},
+  {&__pyx_n_s_angle, __pyx_k_angle, sizeof(__pyx_k_angle), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_distance, __pyx_k_distance, sizeof(__pyx_k_distance), 0, 0, 1, 1},
   {&__pyx_n_s_gravitational_constant, __pyx_k_gravitational_constant, sizeof(__pyx_k_gravitational_constant), 0, 0, 1, 1},
   {&__pyx_n_u_gravitational_constant, __pyx_k_gravitational_constant, sizeof(__pyx_k_gravitational_constant), 0, 1, 0, 1},
+  {&__pyx_n_s_invert_angle, __pyx_k_invert_angle, sizeof(__pyx_k_invert_angle), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_mass, __pyx_k_mass, sizeof(__pyx_k_mass), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
@@ -1283,6 +1366,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
   __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pygravity_math_pyx, __pyx_n_s_acceleration_due_to_gravity, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 3, __pyx_L1_error)
+
+  /* "pygravity/math.pyx":6
+ *     return (gravitational_constant * mass) / distance ** 2
+ * 
+ * def invert_angle(double angle):             # <<<<<<<<<<<<<<
+ *     return (angle + 180) % 360
+ * 
+ */
+  __pyx_tuple__3 = PyTuple_Pack(2, __pyx_n_s_angle, __pyx_n_s_angle); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pygravity_math_pyx, __pyx_n_s_invert_angle, 6, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1581,9 +1676,21 @@ if (!__Pyx_RefNanny) {
   /* "pygravity/math.pyx":6
  *     return (gravitational_constant * mass) / distance ** 2
  * 
+ * def invert_angle(double angle):             # <<<<<<<<<<<<<<
+ *     return (angle + 180) % 360
+ * 
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9pygravity_4math_3invert_angle, NULL, __pyx_n_s_pygravity_math); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_invert_angle, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "pygravity/math.pyx":9
+ *     return (angle + 180) % 360
+ * 
  * __all__ = ['gravitational_constant', 'acceleration_due_to_gravity']             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_u_gravitational_constant);
   __Pyx_GIVEREF(__pyx_n_u_gravitational_constant);
@@ -1591,7 +1698,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_u_acceleration_due_to_gravity);
   __Pyx_GIVEREF(__pyx_n_u_acceleration_due_to_gravity);
   PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_u_acceleration_due_to_gravity);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "pygravity/math.pyx":1
@@ -1875,6 +1982,13 @@ static CYTHON_INLINE PyObject *__Pyx__GetModuleGlobalName(PyObject *name)
     PyErr_Clear();
 #endif
     return __Pyx_GetBuiltinName(name);
+}
+
+/* None */
+static CYTHON_INLINE double __Pyx_mod_double(double a, double b) {
+    double r = fmod(a, b);
+    r += ((r != 0) & ((r < 0) ^ (b < 0))) * b;
+    return r;
 }
 
 /* PyErrFetchRestore */

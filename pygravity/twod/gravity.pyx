@@ -1,4 +1,4 @@
-from ..math import acceleration_due_to_gravity
+from ..math import acceleration_due_to_gravity, invert_angle
 from .vector import Vector2
 from .physics import PhysicsManager
 
@@ -43,8 +43,11 @@ class GravityCaster:
 cdef acceptor_calculate_once(position, double time_passed, caster):
     relative_vector = caster.position - position
     relative_vector_direction = relative_vector.as_direction_magnitude()
-    acceleration = acceleration_due_to_gravity(relative_vector_direction[1])
-    return Vector2.from_direction_magnitude(relative_vector_direction[0], acceleration) * time_passed
+    direction = relative_vector_direction[0]; distance = relative_vector_direction[1]
+    if distance == 0:
+        return relative_vector
+    acceleration = acceleration_due_to_gravity(caster.mass, distance)
+    return Vector2.from_direction_magnitude(invert_angle(direction), acceleration) * time_passed
 
 class GravityAcceptor:
     __slots__ = ['position', 'container', 'physics_manager']
@@ -53,7 +56,7 @@ class GravityAcceptor:
         if not hasattr(container, 'casters'):
             raise TypeError('position must be an instance of GravityContainer')
         self.container = container
-        if not hasattr(container, 'add_velocity_vector'):
+        if not hasattr(physics_manager, 'add_velocity_vector'):
             raise TypeError('physics_manager must be an instance of PhysicsManager')
         self.physics_manager = physics_manager
     def __repr__(self):
