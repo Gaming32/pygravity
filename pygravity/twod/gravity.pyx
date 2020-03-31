@@ -1,4 +1,4 @@
-from ..math import acceleration_due_to_gravity, invert_angle
+from ..math import acceleration_due_to_gravity
 from .vector import Vector2
 from .physics import PhysicsManager
 
@@ -41,13 +41,15 @@ class GravityCaster:
 
 
 cdef acceptor_calculate_once(position, double time_passed, caster):
+    cdef tuple relative_vector_direction
+    cdef double direction, distance, acceleration
     relative_vector = caster.position - position
     relative_vector_direction = relative_vector.as_direction_magnitude()
     direction = relative_vector_direction[0]; distance = relative_vector_direction[1]
     if distance == 0:
         return relative_vector
     acceleration = acceleration_due_to_gravity(caster.mass, distance)
-    return Vector2.from_direction_magnitude(invert_angle(direction), acceleration) * time_passed
+    return Vector2.from_direction_magnitude(direction, acceleration) * time_passed
 
 class GravityAcceptor:
     __slots__ = ['position', 'container', 'physics_manager']

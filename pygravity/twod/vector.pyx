@@ -10,7 +10,8 @@ cdef double deg2rad(double x):
 cdef double rad2deg(double x):
     return x * 180 / M_PI
 
-class Vector2:
+cdef class Vector2:
+    cdef public double x, y
     def __init__(self, double x, double y):
         self.x = x
         self.y = y
@@ -22,7 +23,13 @@ class Vector2:
     def as_tuple(self):
         return (self.x, self.y)
     def as_direction_magnitude(self):
-        return (rad2deg(atan(self.y/self.x)), sqrt(self.x**2 + self.y**2))
+        cdef double direction
+        direction = rad2deg(atan(self.y/self.x))
+        if self.x < 0:
+            direction += 180
+        elif self.y < 0:
+            direction += 360
+        return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
     def set_to(self, vector):
         self.x = vector.x
         self.y = vector.y
@@ -69,11 +76,17 @@ class Vector2:
             return Vector2(self.x % other.x, self.y % other.y)
         else:
             return Vector2(self.x % other, self.y % other)
-    def __pow__(self, other):
-        if isinstance(other, Vector2):
-            return Vector2(self.x ** other.x, self.y ** other.y)
+    def __pow__(self, other, modulus):
+        if modulus is None:
+            if isinstance(other, Vector2):
+                return Vector2(self.x ** other.x, self.y ** other.y)
+            else:
+                return Vector2(self.x ** other, self.y ** other)
         else:
-            return Vector2(self.x ** other, self.y ** other)
+            if isinstance(other, Vector2):
+                return Vector2(self.x ** other.x, self.y ** other.y) % modulus
+            else:
+                return Vector2(self.x ** other, self.y ** other) % modulus
     def __neg__(self):
         return Vector2(-self.x, -self.y)
     def __pos__(self):
