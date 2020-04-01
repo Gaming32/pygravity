@@ -29,7 +29,7 @@ cdef class Vector2:
             direction += 180
         elif self.y < 0:
             direction += 360
-        return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+        return (direction % 360, sqrt(self.x**2 + self.y**2))
     def set_to(self, vector):
         self.x = vector.x
         self.y = vector.y

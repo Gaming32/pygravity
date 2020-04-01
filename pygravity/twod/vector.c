@@ -1925,7 +1925,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_8as_direction_magnit
  *             direction += 180
  *         elif self.y < 0:             # <<<<<<<<<<<<<<
  *             direction += 360
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))
  */
   __pyx_t_1 = ((__pyx_v_self->y < 0.0) != 0);
   if (__pyx_t_1) {
@@ -1934,7 +1934,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_8as_direction_magnit
  *             direction += 180
  *         elif self.y < 0:
  *             direction += 360             # <<<<<<<<<<<<<<
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))
  *     def set_to(self, vector):
  */
     __pyx_v_direction = (__pyx_v_direction + 360.0);
@@ -1944,7 +1944,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_8as_direction_magnit
  *             direction += 180
  *         elif self.y < 0:             # <<<<<<<<<<<<<<
  *             direction += 360
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))
  */
   }
   __pyx_L3:;
@@ -1952,12 +1952,12 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_8as_direction_magnit
   /* "pygravity/twod/vector.pyx":32
  *         elif self.y < 0:
  *             direction += 360
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))             # <<<<<<<<<<<<<<
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))             # <<<<<<<<<<<<<<
  *     def set_to(self, vector):
  *         self.x = vector.x
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyFloat_FromDouble((__Pyx_mod_double(__pyx_v_direction, 360.0) - 180.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__Pyx_mod_double(__pyx_v_direction, 360.0)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = PyFloat_FromDouble(sqrt((pow(__pyx_v_self->x, 2.0) + pow(__pyx_v_self->y, 2.0)))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -1996,7 +1996,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_8as_direction_magnit
 
 /* "pygravity/twod/vector.pyx":33
  *             direction += 360
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))
  *     def set_to(self, vector):             # <<<<<<<<<<<<<<
  *         self.x = vector.x
  *         self.y = vector.y
@@ -2023,7 +2023,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_10set_to(struct __py
   __Pyx_RefNannySetupContext("set_to", 0);
 
   /* "pygravity/twod/vector.pyx":34
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))
  *     def set_to(self, vector):
  *         self.x = vector.x             # <<<<<<<<<<<<<<
  *         self.y = vector.y
@@ -2050,7 +2050,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_6vector_7Vector2_10set_to(struct __py
 
   /* "pygravity/twod/vector.pyx":33
  *             direction += 360
- *         return ((direction % 360) - 180, sqrt(self.x**2 + self.y**2))
+ *         return (direction % 360, sqrt(self.x**2 + self.y**2))
  *     def set_to(self, vector):             # <<<<<<<<<<<<<<
  *         self.x = vector.x
  *         self.y = vector.y
