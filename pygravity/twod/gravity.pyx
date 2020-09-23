@@ -45,7 +45,8 @@ cdef acceptor_calculate_once(position, double time_passed, caster):
     cdef double direction, distance, acceleration
     relative_vector = caster.position - position
     relative_vector_direction = relative_vector.as_direction_magnitude()
-    direction = relative_vector_direction[0]; distance = relative_vector_direction[1]
+    direction = relative_vector_direction[0]
+    distance = relative_vector_direction[1]
     if distance == 0:
         return relative_vector
     acceleration = acceleration_due_to_gravity(caster.mass, distance)

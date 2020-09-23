@@ -2,7 +2,9 @@ from .vector import Vector2
 
 class PhysicsManager:
     __slots__ = ['position', 'velocity']
-    def __init__(self, position, velocity=Vector2(0, 0)):
+    def __init__(self, position, velocity=None):
+        if velocity is None:
+            velocity = Vector2(0, 0)
         self.position = position
         self.velocity = velocity
     def add_velocity(self, double x, double y):

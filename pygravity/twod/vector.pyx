@@ -1,9 +1,12 @@
 cdef extern from "math.h":
-    double sin(double x)
-    double cos(double x)
-    double atan(double x)
-    double sqrt(double x)
+    # double sin(double x)
+    # double cos(double x)
+    # double atan(double x)
+    # double atan2(double x, double y)
+    # double sqrt(double x)
     double M_PI
+
+from libc.math cimport sin, cos, atan2, sqrt
 
 cdef double deg2rad(double x):
     return x * M_PI / 180
@@ -20,19 +23,28 @@ cdef class Vector2:
         return cls(cos(deg2rad(angle)) * distance, sin(deg2rad(angle)) * distance)
     def __repr__(self):
         return "%s(%f, %f)" % (self.__class__.__name__, self.x, self.y)
-    def as_tuple(self):
+    cpdef as_tuple(self):
         return (self.x, self.y)
-    def as_direction_magnitude(self):
-        cdef double direction
-        direction = rad2deg(atan(self.y/self.x))
-        if self.x < 0:
-            direction += 180
-        elif self.y < 0:
-            direction += 360
-        return (direction % 360, sqrt(self.x**2 + self.y**2))
-    def set_to(self, vector):
+    cpdef direction(self):
+        return rad2deg(atan2(self.y, self.x))
+    cpdef as_direction_magnitude(self):
+        return self.direction(), self.magnitude()
+        # cdef double direction
+        # direction = rad2deg(atan(self.y/self.x))
+        # if self.x < 0:
+        #     direction += 180
+        # elif self.y < 0:
+        #     direction += 360
+        # return (direction % 360, sqrt(self.x**2 + self.y**2))
+    cpdef magnitude(self):
+        return sqrt(self.x**2 + self.y**2)
+    cpdef set_to(self, vector):
         self.x = vector.x
         self.y = vector.y
+    cpdef normalize(self):
+        cdef double magnitude = self.magnitude()
+        if magnitude > 0:
+            self.set_to(self / magnitude)
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
@@ -99,7 +111,7 @@ cdef class Vector2:
     def __len__(self):
         return 2
     def __getitem__(self, ix):
-        return self.as_tuple[ix]
+        return self.as_tuple()[ix]
     def __contains__(self, value):
         return self.x == value or self.y == value
 
