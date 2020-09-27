@@ -15,7 +15,7 @@ cdef double rad2deg(double x):
 
 cdef class Vector2:
     cdef public double x, y
-    def __init__(self, double x, double y):
+    def __init__(self, double x = 0, double y = 0):
         self.x = x
         self.y = y
     @classmethod
@@ -68,26 +68,36 @@ cdef class Vector2:
             return Vector2(self.x * other.x, self.y * other.y)
         else:
             return Vector2(self.x * other, self.y * other)
+    def __rmul__(other, self):
+        return Vector2.__mul__(self, other)
     def __div__(self, other):
         if isinstance(other, Vector2):
             return Vector2(self.x / other.x, self.y / other.y)
         else:
             return Vector2(self.x / other, self.y / other)
+    def __rdiv__(other, self):
+        return Vector2.__div__(self, other)
     def __floordiv__(self, other):
         if isinstance(other, Vector2):
             return Vector2(self.x // other.x, self.y // other.y)
         else:
             return Vector2(self.x // other, self.y // other)
+    def __rfloordiv__(other, self):
+        return Vector2.__floordiv__(self, other)
     def __truediv__(self, other):
         if isinstance(other, Vector2):
             return Vector2(self.x / other.x, self.y / other.y)
         else:
             return Vector2(self.x / other, self.y / other)
+    def __rtruediv__(other, self):
+        return Vector2.__truediv__(self, other)
     def __mod__(self, other):
         if isinstance(other, Vector2):
             return Vector2(self.x % other.x, self.y % other.y)
         else:
             return Vector2(self.x % other, self.y % other)
+    def __rmod__(other, self):
+        return Vector2.__mod__(self, other)
     def __pow__(self, other, modulus):
         if modulus is None:
             if isinstance(other, Vector2):
