@@ -6,3 +6,6 @@ pygravity/*.pyd
 pygravity/*/*.pyd
 cythonize.cmd
 build_exts.cmd
+simulation_*.json
+simulation_*.png
+generate_constructor.py

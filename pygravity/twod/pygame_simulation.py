@@ -1,6 +1,8 @@
+from typing import Sequence
 from pygame import Rect, Surface
 from pygame.constants import MOUSEBUTTONDOWN, QUIT
 from pygravity import twod
+from pygravity.twod import util
 import pygame
 
 
@@ -8,14 +10,16 @@ INT_LIMITS = 256 ** 4 // 2 - 1
 GRAVITY_CONTAINER = twod.GravityContainer()
 
 
-__all__ = ['Settings', 'Body', 'bodies', 'start_simulation']
+__all__ = ['Settings', 'Body', 'bodies', 'start_simulation', 'register_event_handler']
 
 
 class Settings:
     scale = 778125000
     time_scale = 1840000
     screen_size = (1280, 960)
+    background_color = (0, 0, 0)
     focus = None
+    event_handlers = {}
 
 
 class Camera:
@@ -23,25 +27,14 @@ class Camera:
     scale = Settings.scale
 
 
-class Body:
+class Body(util.Body):
     def __init__(self, position, mass, visual_color, visual_radius, has_caster=True, has_acceptor=True):
-        self.position = position
+        super().__init__(GRAVITY_CONTAINER, position, mass, has_caster, has_acceptor)
         self.visual_color = visual_color
         self.visual_radius = visual_radius
-        self.physics = twod.PhysicsManager(position)
-        if has_caster:
-            self.caster = twod.GravityCaster(position, mass)
-            GRAVITY_CONTAINER.add_caster(self.caster)
-        else: self.caster = None
-        if has_acceptor:
-            self.acceptor = twod.GravityAcceptor(position, GRAVITY_CONTAINER, self.physics)
-        else: self.acceptor = None
 
     def update(self, time_passed):
-        time_passed *= Settings.time_scale
-        if self.acceptor is not None:
-            self.acceptor.calculate(time_passed)
-        self.physics.calculate(time_passed)
+        super().update(time_passed * Settings.time_scale)
 
     def render(self, surface: Surface):
         render_pos = self.get_render_position()
@@ -74,6 +67,13 @@ class Body:
                     2 * self.visual_radius)
 
 
+def register_event_handler(func, *events):
+    for event in events:
+        if event not in Settings.event_handlers:
+            Settings.event_handlers[event] = []
+        Settings.event_handlers[event].append(func)
+
+
 bodies = []
 
 
@@ -86,10 +86,16 @@ def start_simulation():
     clock = pygame.time.Clock()
     while True:
         clock.tick(50)
+
+        for handler in Settings.event_handlers.get(None, []):
+            handler()
+
         for event in pygame.event.get():
+            for handler in Settings.event_handlers.get(event.type, []):
+                handler(event)
             if event.type == QUIT:
                 pygame.quit()
-                exit()
+                return
             elif event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     print('mouse click:', end=' ')
@@ -115,9 +121,46 @@ def start_simulation():
         for body in reversed(bodies):
             body.update(0.02)
 
-        screen.fill((0, 0, 0))
+        screen.fill(Settings.background_color)
 
         for body in bodies:
             body.render(screen)
 
         pygame.display.update()
+
+
+def visual_radius_from_radius(radius):
+    return radius / Settings.scale
+
+
+def create_surface_from_capture(capture_data: dict, line_thickness=1, render_planets_when: Sequence[int] = (0,)) -> Surface:
+    result = Surface(Settings.screen_size)
+    result.fill(Settings.background_color)
+
+    bodies = {}
+    lines = {}
+    for (name, body_data) in capture_data['meta'].items():
+        body = Body.__new__(Body)
+        body.visual_color = body_data['color']
+        body.visual_radius = visual_radius_from_radius(body_data['radius'])
+        body.mass = body_data['mass']
+        bodies[name] = body
+        if line_thickness:
+            lines[name] = []
+
+    for (i, frame) in enumerate(capture_data['data']):
+        render_planets = i in render_planets_when
+        for (body_name, frame_data) in frame.items():
+            body = bodies[body_name]
+            body.position = frame_data['position']
+            if render_planets:
+                body.render(result)
+            if line_thickness:
+                lines[body_name].append(body.get_render_position())
+
+    if line_thickness:
+        for (body_name, line_set) in lines.items():
+            body = bodies[body_name]
+            pygame.draw.lines(result, body.visual_color, False, line_set, line_thickness)
+
+    return result

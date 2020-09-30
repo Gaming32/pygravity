@@ -36,8 +36,10 @@ cdef class Vector2:
         # elif self.y < 0:
         #     direction += 360
         # return (direction % 360, sqrt(self.x**2 + self.y**2))
+    cpdef sqr_magnitude(self):
+        return self.x**2 + self.y**2
     cpdef magnitude(self):
-        return sqrt(self.x**2 + self.y**2)
+        return sqrt(self.sqr_magnitude())
     cpdef set_to(self, vector):
         self.x = vector.x
         self.y = vector.y
