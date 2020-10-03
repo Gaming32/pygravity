@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name = 'python-gravity',
-    version = '0.5.3',
+    version = '1.0.0b1',
     url = 'https://github.com/gaming32/pygravity',
     author = 'Gaming32',
     author_email = 'gaming32i64@gmail.com',
