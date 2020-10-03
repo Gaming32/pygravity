@@ -10,7 +10,7 @@ INT_LIMITS = 256 ** 4 // 2 - 1
 GRAVITY_CONTAINER = twod.GravityContainer()
 
 
-__all__ = ['Settings', 'Body', 'bodies', 'start_simulation', 'register_event_handler']
+__all__ = ['Settings', 'Body', 'bodies', 'start_simulation', 'register_event_handler', 'visual_radius_from_radius', 'create_surface_from_capture']
 
 
 class Settings:
@@ -32,6 +32,18 @@ class Body(util.Body):
         super().__init__(GRAVITY_CONTAINER, position, mass, has_caster, has_acceptor)
         self.visual_color = visual_color
         self.visual_radius = visual_radius
+
+    @classmethod
+    def from_metadata(cls, body: util.BodyWithMetadata, *defaults):
+        body = util.BodyWithMetadata.ensure_metadata(body, *defaults)
+        return cls(
+            body.body.position,
+            body.body.mass,
+            body.color,
+            visual_radius_from_radius(body.radius),
+            body.body.caster is not None,
+            body.body.acceptor is not None
+        )
 
     def update(self, time_passed):
         super().update(time_passed * Settings.time_scale)

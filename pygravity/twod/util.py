@@ -2,6 +2,9 @@ from typing import List, Optional, Tuple, Union
 from pygravity import twod
 
 
+__all__ = ['Body', 'BodyWithMetadata', 'capture_simulation']
+
+
 class Body:
     def __init__(self, container, position, mass, has_caster=True, has_acceptor=True):
         self.position = position
