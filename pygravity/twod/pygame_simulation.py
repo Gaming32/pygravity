@@ -46,7 +46,7 @@ class Body(util.Body):
         )
 
     def update(self, time_passed):
-        super().update(time_passed * Settings.time_scale)
+        self.step(time_passed * Settings.time_scale)
 
     def render(self, surface: Surface):
         render_pos = self.get_render_position()

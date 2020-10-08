@@ -78,7 +78,7 @@ mars_meta = BodyWithMetadata(mars, 'mars', 3.3895e6, mars.visual_color)
 jupiter_meta = BodyWithMetadata(jupiter, 'jupiter', 6.9911e7, jupiter.visual_color)
 
 print('Running...')
-result = capture_simulation([sun_meta, earth_meta, mars_meta, jupiter_meta], step_distance=1, focus=sun, step_count=1000000)
+result = capture_simulation([sun_meta, earth_meta, mars_meta, jupiter_meta], step_distance=Settings.time_scale, focus=sun, step_count=100)
 print('Done:')
 
 import json, tempfile

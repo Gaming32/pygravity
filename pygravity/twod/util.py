@@ -18,10 +18,11 @@ class Body:
             self.acceptor = twod.GravityAcceptor(position, container, self.physics)
         else: self.acceptor = None
 
-    def update(self, time_passed):
+    def step(self, time_passed):
+        res = None
         if self.acceptor is not None:
-            self.acceptor.calculate(time_passed)
-        self.physics.calculate(time_passed)
+            res = self.acceptor.calculate(time_passed)
+        return res, self.physics.calculate(time_passed)
 
 
 class BodyWithMetadata:
@@ -99,7 +100,7 @@ def capture_simulation(
     report()
     for i in range(step_count):
         for body in bodies:
-            body.body.update(step_distance)
+            body.body.step(step_distance)
         report()
 
     return result
