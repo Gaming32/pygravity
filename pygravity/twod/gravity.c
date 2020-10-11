@@ -856,7 +856,7 @@ struct __pyx_obj_9pygravity_4twod_7physics_PhysicsManager {
 };
 
 
-/* "pygravity/twod/gravity.pyx":6
+/* "pygravity/twod/gravity.pyx":8
  * 
  * 
  * cdef class GravityContainer:             # <<<<<<<<<<<<<<
@@ -870,7 +870,7 @@ struct __pyx_obj_9pygravity_4twod_7gravity_GravityContainer {
 };
 
 
-/* "pygravity/twod/gravity.pyx":28
+/* "pygravity/twod/gravity.pyx":36
  * 
  * 
  * cdef class GravityCaster:             # <<<<<<<<<<<<<<
@@ -884,8 +884,8 @@ struct __pyx_obj_9pygravity_4twod_7gravity_GravityCaster {
 };
 
 
-/* "pygravity/twod/gravity.pyx":51
- *     return Vector2.from_direction_magnitude(direction, acceleration) * time_passed
+/* "pygravity/twod/gravity.pyx":64
+ * 
  * 
  * cdef class GravityAcceptor:             # <<<<<<<<<<<<<<
  *     cdef public Vector2 position
@@ -900,9 +900,9 @@ struct __pyx_obj_9pygravity_4twod_7gravity_GravityAcceptor {
 };
 
 
-/* "pygravity/twod/gravity.pyx":24
- *                 return test_caster
+/* "pygravity/twod/gravity.pyx":32
  *     def __len__(self): return len(self.casters)
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))
  * 
@@ -913,8 +913,8 @@ struct __pyx_obj_9pygravity_4twod_7gravity___pyx_scope_struct____repr__ {
 };
 
 
-/* "pygravity/twod/gravity.pyx":25
- *     def __len__(self): return len(self.casters)
+/* "pygravity/twod/gravity.pyx":33
+ * 
  *     def __repr__(self):
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))             # <<<<<<<<<<<<<<
  * 
@@ -940,7 +940,7 @@ struct __pyx_vtabstruct_9pygravity_4twod_6vector_Vector2 {
   PyObject *(*as_direction_magnitude)(struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *, int __pyx_skip_dispatch);
   PyObject *(*sqr_magnitude)(struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *, int __pyx_skip_dispatch);
   PyObject *(*magnitude)(struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *, int __pyx_skip_dispatch);
-  PyObject *(*set_to)(struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *, PyObject *, int __pyx_skip_dispatch);
+  PyObject *(*set_to)(struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *, double, double, int __pyx_skip_dispatch);
   PyObject *(*normalize)(struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *, int __pyx_skip_dispatch);
 };
 static struct __pyx_vtabstruct_9pygravity_4twod_6vector_Vector2 *__pyx_vtabptr_9pygravity_4twod_6vector_Vector2;
@@ -962,7 +962,7 @@ struct __pyx_vtabstruct_9pygravity_4twod_7physics_PhysicsManager {
 static struct __pyx_vtabstruct_9pygravity_4twod_7physics_PhysicsManager *__pyx_vtabptr_9pygravity_4twod_7physics_PhysicsManager;
 
 
-/* "pygravity/twod/gravity.pyx":6
+/* "pygravity/twod/gravity.pyx":8
  * 
  * 
  * cdef class GravityContainer:             # <<<<<<<<<<<<<<
@@ -978,8 +978,8 @@ struct __pyx_vtabstruct_9pygravity_4twod_7gravity_GravityContainer {
 static struct __pyx_vtabstruct_9pygravity_4twod_7gravity_GravityContainer *__pyx_vtabptr_9pygravity_4twod_7gravity_GravityContainer;
 
 
-/* "pygravity/twod/gravity.pyx":51
- *     return Vector2.from_direction_magnitude(direction, acceleration) * time_passed
+/* "pygravity/twod/gravity.pyx":64
+ * 
  * 
  * cdef class GravityAcceptor:             # <<<<<<<<<<<<<<
  *     cdef public Vector2 position
@@ -1657,15 +1657,14 @@ static PyObject *__pyx_tuple__6;
 static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__8;
 static PyObject *__pyx_tuple__9;
-static PyObject *__pyx_tuple__10;
 /* Late includes */
 
-/* "pygravity/twod/gravity.pyx":9
+/* "pygravity/twod/gravity.pyx":11
  *     cdef public list casters
  * 
  *     def __cinit__(self, *casters):             # <<<<<<<<<<<<<<
  *         self.casters = list(casters)
- *     cpdef add_caster(self, caster):
+ * 
  */
 
 /* Python wrapper */
@@ -1692,14 +1691,14 @@ static int __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer___cinit__(struc
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "pygravity/twod/gravity.pyx":10
+  /* "pygravity/twod/gravity.pyx":12
  * 
  *     def __cinit__(self, *casters):
  *         self.casters = list(casters)             # <<<<<<<<<<<<<<
+ * 
  *     cpdef add_caster(self, caster):
- *         self.casters.append(caster)
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_casters); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_casters); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->casters);
@@ -1707,12 +1706,12 @@ static int __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer___cinit__(struc
   __pyx_v_self->casters = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":9
+  /* "pygravity/twod/gravity.pyx":11
  *     cdef public list casters
  * 
  *     def __cinit__(self, *casters):             # <<<<<<<<<<<<<<
  *         self.casters = list(casters)
- *     cpdef add_caster(self, caster):
+ * 
  */
 
   /* function exit code */
@@ -1727,12 +1726,12 @@ static int __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer___cinit__(struc
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":11
- *     def __cinit__(self, *casters):
+/* "pygravity/twod/gravity.pyx":14
  *         self.casters = list(casters)
+ * 
  *     cpdef add_caster(self, caster):             # <<<<<<<<<<<<<<
  *         self.casters.append(caster)
- *     cdef add_caster_list(self, list casters):
+ * 
  */
 
 static PyObject *__pyx_pw_9pygravity_4twod_7gravity_16GravityContainer_3add_caster(PyObject *__pyx_v_self, PyObject *__pyx_v_caster); /*proto*/
@@ -1754,7 +1753,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add_caster); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add_caster); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_9pygravity_4twod_7gravity_16GravityContainer_3add_caster)) {
         __Pyx_XDECREF(__pyx_r);
@@ -1771,7 +1770,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_caster) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_caster);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -1792,25 +1791,25 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster
     #endif
   }
 
-  /* "pygravity/twod/gravity.pyx":12
- *         self.casters = list(casters)
+  /* "pygravity/twod/gravity.pyx":15
+ * 
  *     cpdef add_caster(self, caster):
  *         self.casters.append(caster)             # <<<<<<<<<<<<<<
+ * 
  *     cdef add_caster_list(self, list casters):
- *         self.casters.extend(casters)
  */
   if (unlikely(__pyx_v_self->casters == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "append");
-    __PYX_ERR(0, 12, __pyx_L1_error)
+    __PYX_ERR(0, 15, __pyx_L1_error)
   }
-  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->casters, __pyx_v_caster); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyList_Append(__pyx_v_self->casters, __pyx_v_caster); if (unlikely(__pyx_t_5 == ((int)-1))) __PYX_ERR(0, 15, __pyx_L1_error)
 
-  /* "pygravity/twod/gravity.pyx":11
- *     def __cinit__(self, *casters):
+  /* "pygravity/twod/gravity.pyx":14
  *         self.casters = list(casters)
+ * 
  *     cpdef add_caster(self, caster):             # <<<<<<<<<<<<<<
  *         self.casters.append(caster)
- *     cdef add_caster_list(self, list casters):
+ * 
  */
 
   /* function exit code */
@@ -1848,7 +1847,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_2add_cast
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("add_caster", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster(__pyx_v_self, __pyx_v_caster, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster(__pyx_v_self, __pyx_v_caster, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -1865,12 +1864,12 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_2add_cast
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":13
- *     cpdef add_caster(self, caster):
+/* "pygravity/twod/gravity.pyx":17
  *         self.casters.append(caster)
+ * 
  *     cdef add_caster_list(self, list casters):             # <<<<<<<<<<<<<<
  *         self.casters.extend(casters)
- *     def add_casters(self, *casters):
+ * 
  */
 
 static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster_list(struct __pyx_obj_9pygravity_4twod_7gravity_GravityContainer *__pyx_v_self, PyObject *__pyx_v_casters) {
@@ -1879,25 +1878,25 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("add_caster_list", 0);
 
-  /* "pygravity/twod/gravity.pyx":14
- *         self.casters.append(caster)
+  /* "pygravity/twod/gravity.pyx":18
+ * 
  *     cdef add_caster_list(self, list casters):
  *         self.casters.extend(casters)             # <<<<<<<<<<<<<<
+ * 
  *     def add_casters(self, *casters):
- *         self.casters.extend(casters)
  */
   if (unlikely(__pyx_v_self->casters == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "extend");
-    __PYX_ERR(0, 14, __pyx_L1_error)
+    __PYX_ERR(0, 18, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyList_Extend(__pyx_v_self->casters, __pyx_v_casters); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyList_Extend(__pyx_v_self->casters, __pyx_v_casters); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 18, __pyx_L1_error)
 
-  /* "pygravity/twod/gravity.pyx":13
- *     cpdef add_caster(self, caster):
+  /* "pygravity/twod/gravity.pyx":17
  *         self.casters.append(caster)
+ * 
  *     cdef add_caster_list(self, list casters):             # <<<<<<<<<<<<<<
  *         self.casters.extend(casters)
- *     def add_casters(self, *casters):
+ * 
  */
 
   /* function exit code */
@@ -1912,12 +1911,12 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":15
- *     cdef add_caster_list(self, list casters):
+/* "pygravity/twod/gravity.pyx":20
  *         self.casters.extend(casters)
+ * 
  *     def add_casters(self, *casters):             # <<<<<<<<<<<<<<
  *         self.casters.extend(casters)
- *     cpdef remove_caster(self, caster):
+ * 
  */
 
 /* Python wrapper */
@@ -1944,25 +1943,25 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_4add_cast
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("add_casters", 0);
 
-  /* "pygravity/twod/gravity.pyx":16
- *         self.casters.extend(casters)
+  /* "pygravity/twod/gravity.pyx":21
+ * 
  *     def add_casters(self, *casters):
  *         self.casters.extend(casters)             # <<<<<<<<<<<<<<
+ * 
  *     cpdef remove_caster(self, caster):
- *         cdef int i
  */
   if (unlikely(__pyx_v_self->casters == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "extend");
-    __PYX_ERR(0, 16, __pyx_L1_error)
+    __PYX_ERR(0, 21, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyList_Extend(__pyx_v_self->casters, __pyx_v_casters); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyList_Extend(__pyx_v_self->casters, __pyx_v_casters); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "pygravity/twod/gravity.pyx":15
- *     cdef add_caster_list(self, list casters):
+  /* "pygravity/twod/gravity.pyx":20
  *         self.casters.extend(casters)
+ * 
  *     def add_casters(self, *casters):             # <<<<<<<<<<<<<<
  *         self.casters.extend(casters)
- *     cpdef remove_caster(self, caster):
+ * 
  */
 
   /* function exit code */
@@ -1977,9 +1976,9 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_4add_cast
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":17
- *     def add_casters(self, *casters):
+/* "pygravity/twod/gravity.pyx":23
  *         self.casters.extend(casters)
+ * 
  *     cpdef remove_caster(self, caster):             # <<<<<<<<<<<<<<
  *         cdef int i
  *         for (i, test_caster) in enumerate(self.casters):
@@ -2009,7 +2008,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_remove_caster); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_remove_caster); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_9pygravity_4twod_7gravity_16GravityContainer_7remove_caster)) {
         __Pyx_XDECREF(__pyx_r);
@@ -2026,7 +2025,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_caster) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_caster);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -2047,7 +2046,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
     #endif
   }
 
-  /* "pygravity/twod/gravity.pyx":19
+  /* "pygravity/twod/gravity.pyx":25
  *     cpdef remove_caster(self, caster):
  *         cdef int i
  *         for (i, test_caster) in enumerate(self.casters):             # <<<<<<<<<<<<<<
@@ -2059,9 +2058,9 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_test_caster, __pyx_t_2);
@@ -2069,7 +2068,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
     __pyx_v_i = __pyx_t_5;
     __pyx_t_5 = (__pyx_t_5 + 1);
 
-    /* "pygravity/twod/gravity.pyx":20
+    /* "pygravity/twod/gravity.pyx":26
  *         cdef int i
  *         for (i, test_caster) in enumerate(self.casters):
  *             if test_caster is caster:             # <<<<<<<<<<<<<<
@@ -2080,25 +2079,25 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
     __pyx_t_8 = (__pyx_t_7 != 0);
     if (__pyx_t_8) {
 
-      /* "pygravity/twod/gravity.pyx":21
+      /* "pygravity/twod/gravity.pyx":27
  *         for (i, test_caster) in enumerate(self.casters):
  *             if test_caster is caster:
  *                 del self.casters[i]             # <<<<<<<<<<<<<<
  *                 return test_caster
- *     def __len__(self): return len(self.casters)
+ * 
  */
       if (unlikely(__pyx_v_self->casters == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 21, __pyx_L1_error)
+        __PYX_ERR(0, 27, __pyx_L1_error)
       }
-      if (unlikely(__Pyx_DelItemInt(__pyx_v_self->casters, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
+      if (unlikely(__Pyx_DelItemInt(__pyx_v_self->casters, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 1, 1, 1) < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
 
-      /* "pygravity/twod/gravity.pyx":22
+      /* "pygravity/twod/gravity.pyx":28
  *             if test_caster is caster:
  *                 del self.casters[i]
  *                 return test_caster             # <<<<<<<<<<<<<<
+ * 
  *     def __len__(self): return len(self.casters)
- *     def __repr__(self):
  */
       __Pyx_XDECREF(__pyx_r);
       __Pyx_INCREF(__pyx_v_test_caster);
@@ -2106,7 +2105,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       goto __pyx_L0;
 
-      /* "pygravity/twod/gravity.pyx":20
+      /* "pygravity/twod/gravity.pyx":26
  *         cdef int i
  *         for (i, test_caster) in enumerate(self.casters):
  *             if test_caster is caster:             # <<<<<<<<<<<<<<
@@ -2115,7 +2114,7 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
  */
     }
 
-    /* "pygravity/twod/gravity.pyx":19
+    /* "pygravity/twod/gravity.pyx":25
  *     cpdef remove_caster(self, caster):
  *         cdef int i
  *         for (i, test_caster) in enumerate(self.casters):             # <<<<<<<<<<<<<<
@@ -2125,9 +2124,9 @@ static PyObject *__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_cas
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":17
- *     def add_casters(self, *casters):
+  /* "pygravity/twod/gravity.pyx":23
  *         self.casters.extend(casters)
+ * 
  *     cpdef remove_caster(self, caster):             # <<<<<<<<<<<<<<
  *         cdef int i
  *         for (i, test_caster) in enumerate(self.casters):
@@ -2169,7 +2168,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_6remove_c
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("remove_caster", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_caster(__pyx_v_self, __pyx_v_caster, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_caster(__pyx_v_self, __pyx_v_caster, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2186,12 +2185,12 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_6remove_c
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":23
- *                 del self.casters[i]
+/* "pygravity/twod/gravity.pyx":30
  *                 return test_caster
+ * 
  *     def __len__(self): return len(self.casters)             # <<<<<<<<<<<<<<
+ * 
  *     def __repr__(self):
- *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))
  */
 
 /* Python wrapper */
@@ -2217,9 +2216,9 @@ static Py_ssize_t __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_8__len__
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 23, __pyx_L1_error)
+    __PYX_ERR(0, 30, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   goto __pyx_L0;
@@ -2234,9 +2233,9 @@ static Py_ssize_t __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_8__len__
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":24
- *                 return test_caster
+/* "pygravity/twod/gravity.pyx":32
  *     def __len__(self): return len(self.casters)
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))
  * 
@@ -2256,8 +2255,8 @@ static PyObject *__pyx_pw_9pygravity_4twod_7gravity_16GravityContainer_11__repr_
 }
 static PyObject *__pyx_gb_9pygravity_4twod_7gravity_16GravityContainer_8__repr___2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "pygravity/twod/gravity.pyx":25
- *     def __len__(self): return len(self.casters)
+/* "pygravity/twod/gravity.pyx":33
+ * 
  *     def __repr__(self):
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))             # <<<<<<<<<<<<<<
  * 
@@ -2273,7 +2272,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_8__repr__
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9pygravity_4twod_7gravity___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 25, __pyx_L1_error)
+    __PYX_ERR(0, 33, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -2281,7 +2280,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_8__repr__
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9pygravity_4twod_7gravity_16GravityContainer_8__repr___2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_repr___locals_genexpr, __pyx_n_s_pygravity_twod_gravity); if (unlikely(!gen)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9pygravity_4twod_7gravity_16GravityContainer_8__repr___2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_repr___locals_genexpr, __pyx_n_s_pygravity_twod_gravity); if (unlikely(!gen)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -2313,30 +2312,30 @@ static PyObject *__pyx_gb_9pygravity_4twod_7gravity_16GravityContainer_8__repr__
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __pyx_r = PyList_New(0); if (unlikely(!__pyx_r)) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_r = PyList_New(0); if (unlikely(!__pyx_r)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 25, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 33, __pyx_L1_error) }
   if (unlikely(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self->casters == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 25, __pyx_L1_error)
+    __PYX_ERR(0, 33, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_self->casters; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 33, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_x);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_x, __pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = PyObject_Repr(__pyx_cur_scope->__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_3 = PyObject_Repr(__pyx_cur_scope->__pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_r, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 25, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_r, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2360,9 +2359,9 @@ static PyObject *__pyx_gb_9pygravity_4twod_7gravity_16GravityContainer_8__repr__
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":24
- *                 return test_caster
+/* "pygravity/twod/gravity.pyx":32
  *     def __len__(self): return len(self.casters)
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))
  * 
@@ -2382,7 +2381,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_10__repr_
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9pygravity_4twod_7gravity___pyx_scope_struct____repr__ *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 24, __pyx_L1_error)
+    __PYX_ERR(0, 32, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -2390,24 +2389,24 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_10__repr_
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
 
-  /* "pygravity/twod/gravity.pyx":25
- *     def __len__(self): return len(self.casters)
+  /* "pygravity/twod/gravity.pyx":33
+ * 
  *     def __repr__(self):
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))             # <<<<<<<<<<<<<<
  * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_cur_scope->__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Unicode(__pyx_t_5), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Unicode(__pyx_t_5), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -2419,12 +2418,12 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_10__repr_
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u_);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_kp_u_);
-  __pyx_t_4 = __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_8__repr___genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_8__repr___genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_Generator_Next(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_Generator_Next(__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyUnicode_Join(__pyx_kp_u__2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = PyUnicode_Join(__pyx_kp_u__2, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -2436,16 +2435,16 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_10__repr_
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__3);
   PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_kp_u__3);
-  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 4, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "pygravity/twod/gravity.pyx":24
- *                 return test_caster
+  /* "pygravity/twod/gravity.pyx":32
  *     def __len__(self): return len(self.casters)
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))
  * 
@@ -2465,7 +2464,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_10__repr_
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":7
+/* "pygravity/twod/gravity.pyx":9
  * 
  * cdef class GravityContainer:
  *     cdef public list casters             # <<<<<<<<<<<<<<
@@ -2520,7 +2519,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_7casters_2__set
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 7, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_value))||((__pyx_v_value) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_value)->tp_name), 0))) __PYX_ERR(0, 9, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -2677,7 +2676,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_16GravityContainer_14__setst
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":32
+/* "pygravity/twod/gravity.pyx":40
  *     cdef public double mass
  * 
  *     def __cinit__(self, Vector2 position, double mass):             # <<<<<<<<<<<<<<
@@ -2716,11 +2715,11 @@ static int __pyx_pw_9pygravity_4twod_7gravity_13GravityCaster_1__cinit__(PyObjec
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mass)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(0, 32, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, 1); __PYX_ERR(0, 40, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 32, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2729,17 +2728,17 @@ static int __pyx_pw_9pygravity_4twod_7gravity_13GravityCaster_1__cinit__(PyObjec
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_position = ((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)values[0]);
-    __pyx_v_mass = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_mass == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L3_error)
+    __pyx_v_mass = __pyx_PyFloat_AsDouble(values[1]); if (unlikely((__pyx_v_mass == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 32, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 40, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pygravity.twod.gravity.GravityCaster.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_position), __pyx_ptype_9pygravity_4twod_6vector_Vector2, 1, "position", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_position), __pyx_ptype_9pygravity_4twod_6vector_Vector2, 1, "position", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster___cinit__(((struct __pyx_obj_9pygravity_4twod_7gravity_GravityCaster *)__pyx_v_self), __pyx_v_position, __pyx_v_mass);
 
   /* function exit code */
@@ -2756,12 +2755,12 @@ static int __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster___cinit__(struct _
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "pygravity/twod/gravity.pyx":33
+  /* "pygravity/twod/gravity.pyx":41
  * 
  *     def __cinit__(self, Vector2 position, double mass):
  *         self.position = position             # <<<<<<<<<<<<<<
  *         self.mass = mass
- *     def __repr__(self):
+ * 
  */
   __Pyx_INCREF(((PyObject *)__pyx_v_position));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_position));
@@ -2769,16 +2768,16 @@ static int __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster___cinit__(struct _
   __Pyx_DECREF(((PyObject *)__pyx_v_self->position));
   __pyx_v_self->position = __pyx_v_position;
 
-  /* "pygravity/twod/gravity.pyx":34
+  /* "pygravity/twod/gravity.pyx":42
  *     def __cinit__(self, Vector2 position, double mass):
  *         self.position = position
  *         self.mass = mass             # <<<<<<<<<<<<<<
+ * 
  *     def __repr__(self):
- *         return '%s(%r, %f)' % (self.__class__.__name__, self.position, self.mass)
  */
   __pyx_v_self->mass = __pyx_v_mass;
 
-  /* "pygravity/twod/gravity.pyx":32
+  /* "pygravity/twod/gravity.pyx":40
  *     cdef public double mass
  * 
  *     def __cinit__(self, Vector2 position, double mass):             # <<<<<<<<<<<<<<
@@ -2792,9 +2791,9 @@ static int __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster___cinit__(struct _
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":35
- *         self.position = position
+/* "pygravity/twod/gravity.pyx":44
  *         self.mass = mass
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %f)' % (self.__class__.__name__, self.position, self.mass)
  * 
@@ -2823,24 +2822,24 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_2__repr__(st
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "pygravity/twod/gravity.pyx":36
- *         self.mass = mass
+  /* "pygravity/twod/gravity.pyx":45
+ * 
  *     def __repr__(self):
  *         return '%s(%r, %f)' % (self.__class__.__name__, self.position, self.mass)             # <<<<<<<<<<<<<<
  * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Unicode(__pyx_t_5), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Unicode(__pyx_t_5), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -2852,7 +2851,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_2__repr__(st
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u_);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_kp_u_);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(((PyObject *)__pyx_v_self->position)), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(((PyObject *)__pyx_v_self->position)), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
@@ -2863,9 +2862,9 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_2__repr__(st
   __pyx_t_2 += 2;
   __Pyx_GIVEREF(__pyx_kp_u__2);
   PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_kp_u__2);
-  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->mass); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_4 = PyFloat_FromDouble(__pyx_v_self->mass); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_Format(__pyx_t_4, __pyx_n_u_f); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Format(__pyx_t_4, __pyx_n_u_f); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -2877,16 +2876,16 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_2__repr__(st
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__3);
   PyTuple_SET_ITEM(__pyx_t_1, 5, __pyx_kp_u__3);
-  __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_1, 6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Join(__pyx_t_1, 6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "pygravity/twod/gravity.pyx":35
- *         self.position = position
+  /* "pygravity/twod/gravity.pyx":44
  *         self.mass = mass
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %f)' % (self.__class__.__name__, self.position, self.mass)
  * 
@@ -2905,7 +2904,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_2__repr__(st
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":29
+/* "pygravity/twod/gravity.pyx":37
  * 
  * cdef class GravityCaster:
  *     cdef public Vector2 position             # <<<<<<<<<<<<<<
@@ -2960,7 +2959,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_8position_2__set__
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 29, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 37, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -3010,7 +3009,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_8position_4__del__
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":30
+/* "pygravity/twod/gravity.pyx":38
  * cdef class GravityCaster:
  *     cdef public Vector2 position
  *     cdef public double mass             # <<<<<<<<<<<<<<
@@ -3037,7 +3036,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_4mass___get_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__get__", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->mass); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->mass); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3072,7 +3071,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_4mass_2__set__(str
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
   __Pyx_RefNannySetupContext("__set__", 0);
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_value); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_value); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 38, __pyx_L1_error)
   __pyx_v_self->mass = __pyx_t_1;
 
   /* function exit code */
@@ -3193,7 +3192,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_13GravityCaster_6__setstate_
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":39
+/* "pygravity/twod/gravity.pyx":48
  * 
  * 
  * cdef Vector2 acceptor_calculate_once(Vector2 position, double time_passed, GravityCaster caster):             # <<<<<<<<<<<<<<
@@ -3220,26 +3219,26 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("acceptor_calculate_once", 0);
 
-  /* "pygravity/twod/gravity.pyx":42
- *     cdef tuple relative_vector_direction
+  /* "pygravity/twod/gravity.pyx":52
  *     cdef double direction, distance, acceleration
+ * 
  *     relative_vector = caster.position - position             # <<<<<<<<<<<<<<
  *     relative_vector_direction = relative_vector.as_direction_magnitude()
  *     direction = relative_vector.direction()
  */
-  __pyx_t_1 = PyNumber_Subtract(((PyObject *)__pyx_v_caster->position), ((PyObject *)__pyx_v_position)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(((PyObject *)__pyx_v_caster->position), ((PyObject *)__pyx_v_position)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_relative_vector = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":43
- *     cdef double direction, distance, acceleration
+  /* "pygravity/twod/gravity.pyx":53
+ * 
  *     relative_vector = caster.position - position
  *     relative_vector_direction = relative_vector.as_direction_magnitude()             # <<<<<<<<<<<<<<
  *     direction = relative_vector.direction()
  *     distance_squared = relative_vector.sqr_magnitude()
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_relative_vector, __pyx_n_s_as_direction_magnitude); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_relative_vector, __pyx_n_s_as_direction_magnitude); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3253,21 +3252,21 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyTuple_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 53, __pyx_L1_error)
   __pyx_v_relative_vector_direction = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":44
+  /* "pygravity/twod/gravity.pyx":54
  *     relative_vector = caster.position - position
  *     relative_vector_direction = relative_vector.as_direction_magnitude()
  *     direction = relative_vector.direction()             # <<<<<<<<<<<<<<
  *     distance_squared = relative_vector.sqr_magnitude()
- *     if distance_squared == 0:
+ * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_relative_vector, __pyx_n_s_direction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_relative_vector, __pyx_n_s_direction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3281,21 +3280,21 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 44, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_direction = __pyx_t_4;
 
-  /* "pygravity/twod/gravity.pyx":45
+  /* "pygravity/twod/gravity.pyx":55
  *     relative_vector_direction = relative_vector.as_direction_magnitude()
  *     direction = relative_vector.direction()
  *     distance_squared = relative_vector.sqr_magnitude()             # <<<<<<<<<<<<<<
+ * 
  *     if distance_squared == 0:
- *         return relative_vector
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_relative_vector, __pyx_n_s_sqr_magnitude); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_relative_vector, __pyx_n_s_sqr_magnitude); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3309,70 +3308,70 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_distance_squared = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":46
- *     direction = relative_vector.direction()
+  /* "pygravity/twod/gravity.pyx":57
  *     distance_squared = relative_vector.sqr_magnitude()
+ * 
  *     if distance_squared == 0:             # <<<<<<<<<<<<<<
  *         return relative_vector
- *     acceleration = acceleration_due_to_gravity_squared(caster.mass, distance_squared)
+ * 
  */
-  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_distance_squared, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_EqObjC(__pyx_v_distance_squared, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_5) {
 
-    /* "pygravity/twod/gravity.pyx":47
- *     distance_squared = relative_vector.sqr_magnitude()
+    /* "pygravity/twod/gravity.pyx":58
+ * 
  *     if distance_squared == 0:
  *         return relative_vector             # <<<<<<<<<<<<<<
+ * 
  *     acceleration = acceleration_due_to_gravity_squared(caster.mass, distance_squared)
- *     return Vector2.from_direction_magnitude(direction, acceleration) * time_passed
  */
     __Pyx_XDECREF(((PyObject *)__pyx_r));
-    if (!(likely(((__pyx_v_relative_vector) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_relative_vector, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 47, __pyx_L1_error)
+    if (!(likely(((__pyx_v_relative_vector) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_relative_vector, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_INCREF(__pyx_v_relative_vector);
     __pyx_r = ((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_v_relative_vector);
     goto __pyx_L0;
 
-    /* "pygravity/twod/gravity.pyx":46
- *     direction = relative_vector.direction()
+    /* "pygravity/twod/gravity.pyx":57
  *     distance_squared = relative_vector.sqr_magnitude()
+ * 
  *     if distance_squared == 0:             # <<<<<<<<<<<<<<
  *         return relative_vector
- *     acceleration = acceleration_due_to_gravity_squared(caster.mass, distance_squared)
+ * 
  */
   }
 
-  /* "pygravity/twod/gravity.pyx":48
- *     if distance_squared == 0:
+  /* "pygravity/twod/gravity.pyx":60
  *         return relative_vector
+ * 
  *     acceleration = acceleration_due_to_gravity_squared(caster.mass, distance_squared)             # <<<<<<<<<<<<<<
  *     return Vector2.from_direction_magnitude(direction, acceleration) * time_passed
  * 
  */
-  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_v_distance_squared); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_4 = __pyx_PyFloat_AsDouble(__pyx_v_distance_squared); if (unlikely((__pyx_t_4 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L1_error)
   __pyx_v_acceleration = __pyx_f_9pygravity_4math_acceleration_due_to_gravity_squared(__pyx_v_caster->mass, __pyx_t_4);
 
-  /* "pygravity/twod/gravity.pyx":49
- *         return relative_vector
+  /* "pygravity/twod/gravity.pyx":61
+ * 
  *     acceleration = acceleration_due_to_gravity_squared(caster.mass, distance_squared)
  *     return Vector2.from_direction_magnitude(direction, acceleration) * time_passed             # <<<<<<<<<<<<<<
  * 
- * cdef class GravityAcceptor:
+ * 
  */
   __Pyx_XDECREF(((PyObject *)__pyx_r));
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_9pygravity_4twod_6vector_Vector2), __pyx_n_s_from_direction_magnitude); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_9pygravity_4twod_6vector_Vector2), __pyx_n_s_from_direction_magnitude); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_direction); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_direction); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_acceleration); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_acceleration); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_7 = NULL;
   __pyx_t_8 = 0;
@@ -3389,7 +3388,7 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_3, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3399,7 +3398,7 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_3, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -3407,7 +3406,7 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   } else
   #endif
   {
-    __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -3418,23 +3417,23 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
     PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_8, __pyx_t_6);
     __pyx_t_3 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_time_passed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_time_passed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_9 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (!(likely(((__pyx_t_9) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_9, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 61, __pyx_L1_error)
   __pyx_r = ((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_t_9);
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "pygravity/twod/gravity.pyx":39
+  /* "pygravity/twod/gravity.pyx":48
  * 
  * 
  * cdef Vector2 acceptor_calculate_once(Vector2 position, double time_passed, GravityCaster caster):             # <<<<<<<<<<<<<<
@@ -3461,7 +3460,7 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":56
+/* "pygravity/twod/gravity.pyx":69
  *     cdef public PhysicsManager physics_manager
  * 
  *     def __cinit__(self, Vector2 position, GravityContainer container, PhysicsManager physics_manager):             # <<<<<<<<<<<<<<
@@ -3503,17 +3502,17 @@ static int __pyx_pw_9pygravity_4twod_7gravity_15GravityAcceptor_1__cinit__(PyObj
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_container)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 1); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 1); __PYX_ERR(0, 69, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_physics_manager)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 2); __PYX_ERR(0, 56, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 2); __PYX_ERR(0, 69, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 69, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3528,15 +3527,15 @@ static int __pyx_pw_9pygravity_4twod_7gravity_15GravityAcceptor_1__cinit__(PyObj
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 69, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pygravity.twod.gravity.GravityAcceptor.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_position), __pyx_ptype_9pygravity_4twod_6vector_Vector2, 1, "position", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_container), __pyx_ptype_9pygravity_4twod_7gravity_GravityContainer, 1, "container", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_physics_manager), __pyx_ptype_9pygravity_4twod_7physics_PhysicsManager, 1, "physics_manager", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_position), __pyx_ptype_9pygravity_4twod_6vector_Vector2, 1, "position", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_container), __pyx_ptype_9pygravity_4twod_7gravity_GravityContainer, 1, "container", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_physics_manager), __pyx_ptype_9pygravity_4twod_7physics_PhysicsManager, 1, "physics_manager", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___cinit__(((struct __pyx_obj_9pygravity_4twod_7gravity_GravityAcceptor *)__pyx_v_self), __pyx_v_position, __pyx_v_container, __pyx_v_physics_manager);
 
   /* function exit code */
@@ -3553,7 +3552,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___cinit__(struct
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "pygravity/twod/gravity.pyx":57
+  /* "pygravity/twod/gravity.pyx":70
  * 
  *     def __cinit__(self, Vector2 position, GravityContainer container, PhysicsManager physics_manager):
  *         self.position = position             # <<<<<<<<<<<<<<
@@ -3566,12 +3565,12 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___cinit__(struct
   __Pyx_DECREF(((PyObject *)__pyx_v_self->position));
   __pyx_v_self->position = __pyx_v_position;
 
-  /* "pygravity/twod/gravity.pyx":58
+  /* "pygravity/twod/gravity.pyx":71
  *     def __cinit__(self, Vector2 position, GravityContainer container, PhysicsManager physics_manager):
  *         self.position = position
  *         self.container = container             # <<<<<<<<<<<<<<
  *         self.physics_manager = physics_manager
- *     def __repr__(self):
+ * 
  */
   __Pyx_INCREF(((PyObject *)__pyx_v_container));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_container));
@@ -3579,12 +3578,12 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___cinit__(struct
   __Pyx_DECREF(((PyObject *)__pyx_v_self->container));
   __pyx_v_self->container = __pyx_v_container;
 
-  /* "pygravity/twod/gravity.pyx":59
+  /* "pygravity/twod/gravity.pyx":72
  *         self.position = position
  *         self.container = container
  *         self.physics_manager = physics_manager             # <<<<<<<<<<<<<<
+ * 
  *     def __repr__(self):
- *         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
  */
   __Pyx_INCREF(((PyObject *)__pyx_v_physics_manager));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_physics_manager));
@@ -3592,7 +3591,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___cinit__(struct
   __Pyx_DECREF(((PyObject *)__pyx_v_self->physics_manager));
   __pyx_v_self->physics_manager = __pyx_v_physics_manager;
 
-  /* "pygravity/twod/gravity.pyx":56
+  /* "pygravity/twod/gravity.pyx":69
  *     cdef public PhysicsManager physics_manager
  * 
  *     def __cinit__(self, Vector2 position, GravityContainer container, PhysicsManager physics_manager):             # <<<<<<<<<<<<<<
@@ -3606,12 +3605,12 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor___cinit__(struct
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":60
- *         self.container = container
+/* "pygravity/twod/gravity.pyx":74
  *         self.physics_manager = physics_manager
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
- *     cpdef Vector2 calculate(self, double time_passed):
+ * 
  */
 
 /* Python wrapper */
@@ -3637,24 +3636,24 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "pygravity/twod/gravity.pyx":61
- *         self.physics_manager = physics_manager
+  /* "pygravity/twod/gravity.pyx":75
+ * 
  *     def __repr__(self):
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)             # <<<<<<<<<<<<<<
+ * 
  *     cpdef Vector2 calculate(self, double time_passed):
- *         "time_passed is in seconds\nused velocity vector is returned"
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Unicode(__pyx_t_5), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Unicode(__pyx_t_5), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -3666,7 +3665,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u_);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_kp_u_);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(((PyObject *)__pyx_v_self->position)), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(((PyObject *)__pyx_v_self->position)), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
@@ -3677,7 +3676,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
   __pyx_t_2 += 2;
   __Pyx_GIVEREF(__pyx_kp_u__2);
   PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_kp_u__2);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(((PyObject *)__pyx_v_self->container)), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(((PyObject *)__pyx_v_self->container)), __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
@@ -3688,19 +3687,19 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__3);
   PyTuple_SET_ITEM(__pyx_t_1, 5, __pyx_kp_u__3);
-  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 6, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "pygravity/twod/gravity.pyx":60
- *         self.container = container
+  /* "pygravity/twod/gravity.pyx":74
  *         self.physics_manager = physics_manager
+ * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
- *     cpdef Vector2 calculate(self, double time_passed):
+ * 
  */
 
   /* function exit code */
@@ -3716,12 +3715,12 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_2__repr__(
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":62
- *     def __repr__(self):
+/* "pygravity/twod/gravity.pyx":77
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
+ * 
  *     cpdef Vector2 calculate(self, double time_passed):             # <<<<<<<<<<<<<<
  *         "time_passed is in seconds\nused velocity vector is returned"
- *         cdef Vector2 result = Vector2(0, 0)
+ *         cdef Vector2 result = Vector2()
  */
 
 static PyObject *__pyx_pw_9pygravity_4twod_7gravity_15GravityAcceptor_5calculate(PyObject *__pyx_v_self, PyObject *__pyx_arg_time_passed); /*proto*/
@@ -3746,11 +3745,11 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_calculate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_9pygravity_4twod_7gravity_15GravityAcceptor_5calculate)) {
         __Pyx_XDECREF(((PyObject *)__pyx_r));
-        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_time_passed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_time_passed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
@@ -3766,10 +3765,10 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
         __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 62, __pyx_L1_error)
+        if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 77, __pyx_L1_error)
         __pyx_r = ((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -3788,43 +3787,43 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
     #endif
   }
 
-  /* "pygravity/twod/gravity.pyx":64
+  /* "pygravity/twod/gravity.pyx":79
  *     cpdef Vector2 calculate(self, double time_passed):
  *         "time_passed is in seconds\nused velocity vector is returned"
- *         cdef Vector2 result = Vector2(0, 0)             # <<<<<<<<<<<<<<
+ *         cdef Vector2 result = Vector2()             # <<<<<<<<<<<<<<
  *         for caster in self.container.casters:
  *             result += acceptor_calculate_once(self.position, time_passed, caster)
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9pygravity_4twod_6vector_Vector2), __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9pygravity_4twod_6vector_Vector2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":65
+  /* "pygravity/twod/gravity.pyx":80
  *         "time_passed is in seconds\nused velocity vector is returned"
- *         cdef Vector2 result = Vector2(0, 0)
+ *         cdef Vector2 result = Vector2()
  *         for caster in self.container.casters:             # <<<<<<<<<<<<<<
  *             result += acceptor_calculate_once(self.position, time_passed, caster)
  *         self.physics_manager.add_velocity_vector(result)
  */
   if (unlikely(__pyx_v_self->container->casters == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 65, __pyx_L1_error)
+    __PYX_ERR(0, 80, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_self->container->casters; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_caster, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "pygravity/twod/gravity.pyx":66
- *         cdef Vector2 result = Vector2(0, 0)
+    /* "pygravity/twod/gravity.pyx":81
+ *         cdef Vector2 result = Vector2()
  *         for caster in self.container.casters:
  *             result += acceptor_calculate_once(self.position, time_passed, caster)             # <<<<<<<<<<<<<<
  *         self.physics_manager.add_velocity_vector(result)
@@ -3832,20 +3831,20 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
  */
     __pyx_t_2 = ((PyObject *)__pyx_v_self->position);
     __Pyx_INCREF(__pyx_t_2);
-    if (!(likely(((__pyx_v_caster) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_caster, __pyx_ptype_9pygravity_4twod_7gravity_GravityCaster))))) __PYX_ERR(0, 66, __pyx_L1_error)
-    __pyx_t_4 = ((PyObject *)__pyx_f_9pygravity_4twod_7gravity_acceptor_calculate_once(((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_t_2), __pyx_v_time_passed, ((struct __pyx_obj_9pygravity_4twod_7gravity_GravityCaster *)__pyx_v_caster))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 66, __pyx_L1_error)
+    if (!(likely(((__pyx_v_caster) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_caster, __pyx_ptype_9pygravity_4twod_7gravity_GravityCaster))))) __PYX_ERR(0, 81, __pyx_L1_error)
+    __pyx_t_4 = ((PyObject *)__pyx_f_9pygravity_4twod_7gravity_acceptor_calculate_once(((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_t_2), __pyx_v_time_passed, ((struct __pyx_obj_9pygravity_4twod_7gravity_GravityCaster *)__pyx_v_caster))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_InPlaceAdd(((PyObject *)__pyx_v_result), __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_InPlaceAdd(((PyObject *)__pyx_v_result), __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 66, __pyx_L1_error)
+    if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_result, ((struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "pygravity/twod/gravity.pyx":65
+    /* "pygravity/twod/gravity.pyx":80
  *         "time_passed is in seconds\nused velocity vector is returned"
- *         cdef Vector2 result = Vector2(0, 0)
+ *         cdef Vector2 result = Vector2()
  *         for caster in self.container.casters:             # <<<<<<<<<<<<<<
  *             result += acceptor_calculate_once(self.position, time_passed, caster)
  *         self.physics_manager.add_velocity_vector(result)
@@ -3853,18 +3852,18 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":67
+  /* "pygravity/twod/gravity.pyx":82
  *         for caster in self.container.casters:
  *             result += acceptor_calculate_once(self.position, time_passed, caster)
  *         self.physics_manager.add_velocity_vector(result)             # <<<<<<<<<<<<<<
  *         return result
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9pygravity_4twod_7physics_PhysicsManager *)__pyx_v_self->physics_manager->__pyx_vtab)->add_velocity_vector(__pyx_v_self->physics_manager, __pyx_v_result, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9pygravity_4twod_7physics_PhysicsManager *)__pyx_v_self->physics_manager->__pyx_vtab)->add_velocity_vector(__pyx_v_self->physics_manager, __pyx_v_result, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pygravity/twod/gravity.pyx":68
+  /* "pygravity/twod/gravity.pyx":83
  *             result += acceptor_calculate_once(self.position, time_passed, caster)
  *         self.physics_manager.add_velocity_vector(result)
  *         return result             # <<<<<<<<<<<<<<
@@ -3876,12 +3875,12 @@ static struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *__pyx_f_9pygravity_4tw
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "pygravity/twod/gravity.pyx":62
- *     def __repr__(self):
+  /* "pygravity/twod/gravity.pyx":77
  *         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
+ * 
  *     cpdef Vector2 calculate(self, double time_passed):             # <<<<<<<<<<<<<<
  *         "time_passed is in seconds\nused velocity vector is returned"
- *         cdef Vector2 result = Vector2(0, 0)
+ *         cdef Vector2 result = Vector2()
  */
 
   /* function exit code */
@@ -3910,7 +3909,7 @@ static PyObject *__pyx_pw_9pygravity_4twod_7gravity_15GravityAcceptor_5calculate
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("calculate (wrapper)", 0);
   assert(__pyx_arg_time_passed); {
-    __pyx_v_time_passed = __pyx_PyFloat_AsDouble(__pyx_arg_time_passed); if (unlikely((__pyx_v_time_passed == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L3_error)
+    __pyx_v_time_passed = __pyx_PyFloat_AsDouble(__pyx_arg_time_passed); if (unlikely((__pyx_v_time_passed == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3931,7 +3930,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_4calculate
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("calculate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)__pyx_f_9pygravity_4twod_7gravity_15GravityAcceptor_calculate(__pyx_v_self, __pyx_v_time_passed, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_9pygravity_4twod_7gravity_15GravityAcceptor_calculate(__pyx_v_self, __pyx_v_time_passed, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3948,7 +3947,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_4calculate
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":52
+/* "pygravity/twod/gravity.pyx":65
  * 
  * cdef class GravityAcceptor:
  *     cdef public Vector2 position             # <<<<<<<<<<<<<<
@@ -4003,7 +4002,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_8position_2__set
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 52, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_6vector_Vector2))))) __PYX_ERR(0, 65, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4053,7 +4052,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_8position_4__del
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":53
+/* "pygravity/twod/gravity.pyx":66
  * cdef class GravityAcceptor:
  *     cdef public Vector2 position
  *     cdef public GravityContainer container             # <<<<<<<<<<<<<<
@@ -4108,7 +4107,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_9container_2__se
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_7gravity_GravityContainer))))) __PYX_ERR(0, 53, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_7gravity_GravityContainer))))) __PYX_ERR(0, 66, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4158,7 +4157,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_9container_4__de
   return __pyx_r;
 }
 
-/* "pygravity/twod/gravity.pyx":54
+/* "pygravity/twod/gravity.pyx":67
  *     cdef public Vector2 position
  *     cdef public GravityContainer container
  *     cdef public PhysicsManager physics_manager             # <<<<<<<<<<<<<<
@@ -4213,7 +4212,7 @@ static int __pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_15physics_manage
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__set__", 0);
-  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_7physics_PhysicsManager))))) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (!(likely(((__pyx_v_value) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_value, __pyx_ptype_9pygravity_4twod_7physics_PhysicsManager))))) __PYX_ERR(0, 67, __pyx_L1_error)
   __pyx_t_1 = __pyx_v_value;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -4294,7 +4293,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_6__reduce_
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4347,7 +4346,7 @@ static PyObject *__pyx_pf_9pygravity_4twod_7gravity_15GravityAcceptor_8__setstat
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5197,7 +5196,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -5246,35 +5245,24 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "pygravity/twod/gravity.pyx":64
- *     cpdef Vector2 calculate(self, double time_passed):
- *         "time_passed is in seconds\nused velocity vector is returned"
- *         cdef Vector2 result = Vector2(0, 0)             # <<<<<<<<<<<<<<
- *         for caster in self.container.casters:
- *             result += acceptor_calculate_once(self.position, time_passed, caster)
- */
-  __pyx_tuple__8 = PyTuple_Pack(2, __pyx_int_0, __pyx_int_0); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 64, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
-
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__9);
-  __Pyx_GIVEREF(__pyx_tuple__9);
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5330,41 +5318,41 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_9pygravity_4twod_7gravity_GravityContainer.add_caster = (PyObject *(*)(struct __pyx_obj_9pygravity_4twod_7gravity_GravityContainer *, PyObject *, int __pyx_skip_dispatch))__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster;
   __pyx_vtable_9pygravity_4twod_7gravity_GravityContainer.add_caster_list = (PyObject *(*)(struct __pyx_obj_9pygravity_4twod_7gravity_GravityContainer *, PyObject *))__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster_list;
   __pyx_vtable_9pygravity_4twod_7gravity_GravityContainer.remove_caster = (PyObject *(*)(struct __pyx_obj_9pygravity_4twod_7gravity_GravityContainer *, PyObject *, int __pyx_skip_dispatch))__pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_caster;
-  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9pygravity_4twod_7gravity_GravityContainer.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9pygravity_4twod_7gravity_GravityContainer.tp_dictoffset && __pyx_type_9pygravity_4twod_7gravity_GravityContainer.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9pygravity_4twod_7gravity_GravityContainer.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9pygravity_4twod_7gravity_GravityContainer.tp_dict, __pyx_vtabptr_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_GravityContainer, (PyObject *)&__pyx_type_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9pygravity_4twod_7gravity_GravityContainer.tp_dict, __pyx_vtabptr_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_GravityContainer, (PyObject *)&__pyx_type_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9pygravity_4twod_7gravity_GravityContainer) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __pyx_ptype_9pygravity_4twod_7gravity_GravityContainer = &__pyx_type_9pygravity_4twod_7gravity_GravityContainer;
-  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity_GravityCaster) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity_GravityCaster) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9pygravity_4twod_7gravity_GravityCaster.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9pygravity_4twod_7gravity_GravityCaster.tp_dictoffset && __pyx_type_9pygravity_4twod_7gravity_GravityCaster.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9pygravity_4twod_7gravity_GravityCaster.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_GravityCaster, (PyObject *)&__pyx_type_9pygravity_4twod_7gravity_GravityCaster) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9pygravity_4twod_7gravity_GravityCaster) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_GravityCaster, (PyObject *)&__pyx_type_9pygravity_4twod_7gravity_GravityCaster) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9pygravity_4twod_7gravity_GravityCaster) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
   __pyx_ptype_9pygravity_4twod_7gravity_GravityCaster = &__pyx_type_9pygravity_4twod_7gravity_GravityCaster;
   __pyx_vtabptr_9pygravity_4twod_7gravity_GravityAcceptor = &__pyx_vtable_9pygravity_4twod_7gravity_GravityAcceptor;
   __pyx_vtable_9pygravity_4twod_7gravity_GravityAcceptor.calculate = (struct __pyx_obj_9pygravity_4twod_6vector_Vector2 *(*)(struct __pyx_obj_9pygravity_4twod_7gravity_GravityAcceptor *, double, int __pyx_skip_dispatch))__pyx_f_9pygravity_4twod_7gravity_15GravityAcceptor_calculate;
-  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9pygravity_4twod_7gravity_GravityAcceptor.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor.tp_dictoffset && __pyx_type_9pygravity_4twod_7gravity_GravityAcceptor.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9pygravity_4twod_7gravity_GravityAcceptor.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor.tp_dict, __pyx_vtabptr_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_GravityAcceptor, (PyObject *)&__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor.tp_dict, __pyx_vtabptr_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_GravityAcceptor, (PyObject *)&__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
   __pyx_ptype_9pygravity_4twod_7gravity_GravityAcceptor = &__pyx_type_9pygravity_4twod_7gravity_GravityAcceptor;
-  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct____repr__) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct____repr__) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct____repr__.tp_print = 0;
   #endif
@@ -5372,7 +5360,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct____repr__.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_9pygravity_4twod_7gravity___pyx_scope_struct____repr__ = &__pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct____repr__;
-  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9pygravity_4twod_7gravity___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif
@@ -5641,12 +5629,12 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "pygravity/twod/gravity.pyx":71
+  /* "pygravity/twod/gravity.pyx":86
  * 
  * 
  * __all__ = ['GravityContainer', 'GravityCaster', 'GravityAcceptor']             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_n_u_GravityContainer);
   __Pyx_GIVEREF(__pyx_n_u_GravityContainer);
@@ -5657,13 +5645,13 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(__pyx_n_u_GravityAcceptor);
   __Pyx_GIVEREF(__pyx_n_u_GravityAcceptor);
   PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_u_GravityAcceptor);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_all, __pyx_t_1) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "pygravity/twod/gravity.pyx":1
- * from pygravity.math cimport acceleration_due_to_gravity_squared             # <<<<<<<<<<<<<<
- * from pygravity.twod.vector cimport Vector2
- * from pygravity.twod.physics cimport PhysicsManager
+ * """"""             # <<<<<<<<<<<<<<
+ * 
+ * from pygravity.math cimport acceleration_due_to_gravity_squared
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

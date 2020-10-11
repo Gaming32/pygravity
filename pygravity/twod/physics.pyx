@@ -9,11 +9,13 @@ cdef class PhysicsManager:
     cpdef add_velocity(self, double x, double y):
         return self.add_velocity_vector(Vector2(x, y))
     cpdef add_velocity_vector(self, Vector2 velocity):
-        self.velocity.set_to(self.velocity + velocity)
+        cdef Vector2 newvel = self.velocity + velocity
+        self.velocity.set_to(newvel.x, newvel.y)
         return self.velocity
     cpdef Vector2 calculate(self, double time_passed):
         "time_passed is in seconds\nupon completion PhysicsManager.position is updated mutably\nnew position is also returned"
-        self.position.set_to(self.position + self.velocity * time_passed)
+        cdef Vector2 newpos = self.position + self.velocity * time_passed
+        self.position.set_to(newpos.x, newpos.y)
         return self.position
 
 __all__ = ['PhysicsManager']

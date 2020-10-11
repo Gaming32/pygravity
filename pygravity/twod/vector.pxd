@@ -5,5 +5,5 @@ cdef class Vector2:
     cpdef as_direction_magnitude(self)
     cpdef sqr_magnitude(self)
     cpdef magnitude(self)
-    cpdef set_to(self, vector)
+    cpdef set_to(self, double x, double y)
     cpdef normalize(self)
