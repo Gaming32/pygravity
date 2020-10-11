@@ -14,8 +14,7 @@ cdef double rad2deg(double x):
     return x * 180 / M_PI
 
 cdef class Vector2:
-    cdef public double x, y
-    def __init__(self, double x = 0, double y = 0):
+    def __cinit__(self, double x = 0, double y = 0):
         self.x = x
         self.y = y
     @classmethod

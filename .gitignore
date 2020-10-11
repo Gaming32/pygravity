@@ -2,6 +2,7 @@ build
 .eggs
 python_gravity.egg-info
 setup.cmd
+**/__pycache__
 pygravity/*.pyd
 pygravity/*/*.pyd
 cythonize.cmd
@@ -9,3 +10,4 @@ build_exts.cmd
 simulation_*.json
 simulation_*.png
 generate_constructor.py
+earth_and_sun_old.py

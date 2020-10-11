@@ -1,27 +1,21 @@
-from ..math import acceleration_due_to_gravity
-from .vector import Vector2
-from .physics import PhysicsManager
+from pygravity.math cimport acceleration_due_to_gravity_squared
+from pygravity.twod.vector cimport Vector2
+from pygravity.twod.physics cimport PhysicsManager
 
 
-cdef position_init(position):
-    if not hasattr(position, 'x') or not hasattr(position, 'y'):
-        if not isinstance(position, (list, tuple)):
-            raise TypeError('position must be an instance of Vector2 or 2-tuple')
-        elif len(position) < 2:
-            raise TypeError('position tuple must be 2-tuple')
-        else: position = Vector2(*position[:2])
-    return position
+cdef class GravityContainer:
+    cdef public list casters
 
-
-class GravityContainer:
-    __slots__ = ['casters']
-    def __init__(self, *casters):
+    def __cinit__(self, *casters):
         self.casters = list(casters)
-    def add_caster(self, caster):
+    cpdef add_caster(self, caster):
         self.casters.append(caster)
+    cdef add_caster_list(self, list casters):
+        self.casters.extend(casters)
     def add_casters(self, *casters):
         self.casters.extend(casters)
-    def remove_caster(self, caster):
+    cpdef remove_caster(self, caster):
+        cdef int i
         for (i, test_caster) in enumerate(self.casters):
             if test_caster is caster:
                 del self.casters[i]
@@ -31,42 +25,43 @@ class GravityContainer:
         return '%s(%s)' % (self.__class__.__name__, ', '.join(repr(x) for x in self.casters))
 
 
-class GravityCaster:
-    __slots__ = ['position', 'mass']
-    def __init__(self, position, double mass):
-        self.position = position_init(position)
+cdef class GravityCaster:
+    cdef public Vector2 position
+    cdef public double mass
+
+    def __cinit__(self, Vector2 position, double mass):
+        self.position = position
         self.mass = mass
     def __repr__(self):
         return '%s(%r, %f)' % (self.__class__.__name__, self.position, self.mass)
 
 
-cdef acceptor_calculate_once(position, double time_passed, caster):
+cdef Vector2 acceptor_calculate_once(Vector2 position, double time_passed, GravityCaster caster):
     cdef tuple relative_vector_direction
     cdef double direction, distance, acceleration
     relative_vector = caster.position - position
     relative_vector_direction = relative_vector.as_direction_magnitude()
-    direction = relative_vector_direction[0]
-    distance = relative_vector_direction[1]
-    if distance == 0:
+    direction = relative_vector.direction()
+    distance_squared = relative_vector.sqr_magnitude()
+    if distance_squared == 0:
         return relative_vector
-    acceleration = acceleration_due_to_gravity(caster.mass, distance)
+    acceleration = acceleration_due_to_gravity_squared(caster.mass, distance_squared)
     return Vector2.from_direction_magnitude(direction, acceleration) * time_passed
 
-class GravityAcceptor:
-    __slots__ = ['position', 'container', 'physics_manager']
-    def __init__(self, position, container, physics_manager):
-        self.position = position_init(position)
-        if not hasattr(container, 'casters'):
-            raise TypeError('position must be an instance of GravityContainer')
+cdef class GravityAcceptor:
+    cdef public Vector2 position
+    cdef public GravityContainer container
+    cdef public PhysicsManager physics_manager
+
+    def __cinit__(self, Vector2 position, GravityContainer container, PhysicsManager physics_manager):
+        self.position = position
         self.container = container
-        if not hasattr(physics_manager, 'add_velocity_vector'):
-            raise TypeError('physics_manager must be an instance of PhysicsManager')
         self.physics_manager = physics_manager
     def __repr__(self):
         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
-    def calculate(self, double time_passed):
+    cpdef Vector2 calculate(self, double time_passed):
         "time_passed is in seconds\nused velocity vector is returned"
-        result = Vector2(0, 0)
+        cdef Vector2 result = Vector2(0, 0)
         for caster in self.container.casters:
             result += acceptor_calculate_once(self.position, time_passed, caster)
         self.physics_manager.add_velocity_vector(result)
