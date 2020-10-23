@@ -46,6 +46,7 @@ cdef class GravityCaster:
 
 
 cdef Vector2 acceptor_calculate_once(Vector2 position, double time_passed, GravityCaster caster):
+    cdef Vector2 relative_vector
     cdef tuple relative_vector_direction
     cdef double direction, distance, acceleration
 

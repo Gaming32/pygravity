@@ -1,15 +1,15 @@
 """Vector2 implementation used by pygravity"""
 
-cdef extern from "math.h":
+cdef extern from "math.h" nogil:
     double M_PI
 
 from libc.math cimport sin, cos, atan2, sqrt
 
 
-cdef inline double deg2rad(double x):
+cdef inline double deg2rad(double x) nogil:
     return x * M_PI / 180
 
-cdef inline double rad2deg(double x):
+cdef inline double rad2deg(double x) nogil:
     return x * 180 / M_PI
 
 
@@ -72,8 +72,9 @@ Return this vector's magnitude"""
         """set_to(self, x: float, y: float) -> None
 
 Mutably update this vector's x and y coordinates to x and y, respectively"""
-        self.x = x
-        self.y = y
+        with nogil:
+            self.x = x
+            self.y = y
 
     cpdef normalize(self):
         """normalize(self) -> None
@@ -83,6 +84,12 @@ while keeping the same direction"""
         cdef double direction = self.direction()
         self.set_to(cos(deg2rad(direction)), sin(deg2rad(direction)))
 
+    cpdef copy(self):
+        """copy(self) -> Vector2
+        
+Create a copy of this vector and return it"""
+        return Vector2(self.x, self.y)
+
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
@@ -90,16 +97,16 @@ while keeping the same direction"""
         return self.x != other.x and self.y != other.y
 
     def __lt__(self, other):
-        return self.x < other.x or self.y < other.y
+        return self.x < other.x and self.y < other.y
 
     def __gt__(self, other):
-        return self.x > other.x or self.y > other.y
+        return self.x > other.x and self.y > other.y
 
     def __le__(self, other):
-        return self.x <= other.x or self.y <= other.y
+        return self.x <= other.x and self.y <= other.y
 
     def __ge__(self, other):
-        return self.x >= other.x or self.y >= other.y
+        return self.x >= other.x and self.y >= other.y
 
     def __add__(self, other):
         return Vector2(self.x + other.x, self.y + other.y)

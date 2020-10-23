@@ -1,8 +1,8 @@
 import setuptools
 
 setuptools.setup(
-    name = 'python-gravity',
-    version = '1.0.0b3',
+    name = 'Python-Gravity',
+    version = '1.0.0b4',
     url = 'https://github.com/gaming32/pygravity',
     author = 'Gaming32',
     author_email = 'gaming32i64@gmail.com',
@@ -10,6 +10,16 @@ setuptools.setup(
     description = 'Library for calculating stuff having to do with gravity',
     long_description = '',
     long_description_content_type = 'text/markdown',
+    package_data = {
+        'pygravity': [
+            'py.typed',
+            'math.pyi',
+        ],
+        'pygravity.twod': [
+            'py.typed', 
+            'vector.pyi',
+        ],
+    },
     packages = [
         'pygravity',
         'pygravity.twod',

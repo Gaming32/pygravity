@@ -7,3 +7,4 @@ cdef class Vector2:
     cpdef magnitude(self)
     cpdef set_to(self, double x, double y)
     cpdef normalize(self)
+    cpdef copy(self)
