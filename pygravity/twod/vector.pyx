@@ -14,7 +14,7 @@ cdef inline double rad2deg(double x) nogil:
 
 
 cdef class Vector2:
-    """Vector2(x: float = 0, y: float = 0) -> Vector2
+    """Vector2(x: float = 0, y: float = 0)
 
 Attributes
 ----------

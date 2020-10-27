@@ -1,10 +1,11 @@
 from typing import Sequence
+
+import pygame
 from pygame import Rect, Surface
 from pygame.constants import MOUSEBUTTONDOWN, QUIT
+
 from pygravity import twod
 from pygravity.twod import util
-import pygame
-
 
 INT_LIMITS = 256 ** 4 // 2 - 1
 GRAVITY_CONTAINER = twod.GravityContainer()

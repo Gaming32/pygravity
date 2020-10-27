@@ -1,4 +1,4 @@
-"""Common math functions
+"""Common math functions for pygravity
 
 Constants
 ---------

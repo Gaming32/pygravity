@@ -1,4 +1,5 @@
-""""""
+"""Generic 2D gravity related classes for pygravity"""
+
 
 from pygravity.math cimport acceleration_due_to_gravity_squared
 from pygravity.twod.vector cimport Vector2
@@ -6,26 +7,47 @@ from pygravity.twod.physics cimport PhysicsManager
 
 
 cdef class GravityContainer:
-    cdef public list casters
+    """GravityContainer(*casters: GravityCaster)
+
+List optimized for GravityCaster objects
+    
+Attributes
+----------
+casters : list[GravityCaster]"""
+
+    cdef readonly list casters
 
     def __cinit__(self, *casters):
         self.casters = list(casters)
 
-    cpdef add_caster(self, caster):
+    cpdef add_caster(self, GravityCaster caster):
+        """add_caster(self, caster: GravityCaster) -> None
+
+Adds a caster to this containter"""
         self.casters.append(caster)
 
     cdef add_caster_list(self, list casters):
         self.casters.extend(casters)
 
     def add_casters(self, *casters):
+        """add_casters(self, *casters: GravityCaster) -> None
+
+Adds multiple casters to this container (potentially slower than add_caster)"""
         self.casters.extend(casters)
 
-    cpdef remove_caster(self, caster):
+    cpdef remove_caster(self, GravityCaster caster):
+        """remove_caster(self, caster: GravityCaster) -> GravityCaster
+
+Removes the specified caster from this container and returns it"""
         cdef int i
+        cdef GravityCaster test_caster
         for (i, test_caster) in enumerate(self.casters):
             if test_caster is caster:
                 del self.casters[i]
                 return test_caster
+
+    def __iter__(self):
+        return iter(self.casters)
 
     def __len__(self): return len(self.casters)
 
@@ -34,6 +56,17 @@ cdef class GravityContainer:
 
 
 cdef class GravityCaster:
+    """GravityCaster(position: Vector2, mass: float)
+    
+Represents a spatial body that can pull on other spatial bodies
+
+Attributes
+----------
+position : Vector2
+    The current position of the body (in meters)
+mass : float
+    The mass of the body (in kilograms)"""
+
     cdef public Vector2 position
     cdef public double mass
 
@@ -63,6 +96,19 @@ cdef Vector2 acceptor_calculate_once(Vector2 position, double time_passed, Gravi
 
 
 cdef class GravityAcceptor:
+    """GravityAcceptor(position: Vector2, container: GravityContainer, physics_manager: PhysicsManager)
+
+Represents a body that can get pulled on by other spatial bodies
+
+Attributes
+----------
+position : Vector2
+    The current position of the body (in meters)
+container : GravityContainer
+    The container with GravityCasters that can pull on this body
+physics_manager : PhysicsManager
+    The manager to which to add calculated velocity to"""
+
     cdef public Vector2 position
     cdef public GravityContainer container
     cdef public PhysicsManager physics_manager
@@ -76,7 +122,13 @@ cdef class GravityAcceptor:
         return '%s(%r, %r)' % (self.__class__.__name__, self.position, self.container)
 
     cpdef Vector2 calculate(self, double time_passed):
-        "time_passed is in seconds\nused velocity vector is returned"
+        """calculate(self, time_passed: float) -> Vector2
+
+Calculates the things that happened to this body within time_passed
+The unit for time_passed is seconds
+This function returns the velocity that was applied to this body"""
+        # "time_passed is in seconds
+        # used velocity vector is returned"
         cdef Vector2 result = Vector2()
         for caster in self.container.casters:
             result += acceptor_calculate_once(self.position, time_passed, caster)

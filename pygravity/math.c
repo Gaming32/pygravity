@@ -1071,7 +1071,7 @@ static const char __pyx_k_pygravity_math_pyx[] = "pygravity\\math.pyx";
 static const char __pyx_k_GRAVITATIONAL_CONSTANT[] = "GRAVITATIONAL_CONSTANT";
 static const char __pyx_k_gravitational_constant[] = "gravitational_constant";
 static const char __pyx_k_acceleration_due_to_gravity[] = "acceleration_due_to_gravity";
-static const char __pyx_k_Common_math_functions_Constants[] = "Common math functions\n\nConstants\n---------\nGRAVITATIONAL_CONSTANT\n\nFunctions\n---------\nacceleration_due_to_gravity(attractor_mass: float, distance: float) -> float\n";
+static const char __pyx_k_Common_math_functions_for_pygrav[] = "Common math functions for pygravity\n\nConstants\n---------\nGRAVITATIONAL_CONSTANT\n\nFunctions\n---------\nacceleration_due_to_gravity(attractor_mass: float, distance: float) -> float\n";
 static PyObject *__pyx_n_s_GRAVITATIONAL_CONSTANT;
 static PyObject *__pyx_n_u_GRAVITATIONAL_CONSTANT;
 static PyObject *__pyx_n_s_acceleration_due_to_gravity;
@@ -1269,7 +1269,7 @@ static PyModuleDef_Slot __pyx_moduledef_slots[] = {
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
     "math",
-    __pyx_k_Common_math_functions_Constants, /* m_doc */
+    __pyx_k_Common_math_functions_for_pygrav, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
   #else
@@ -1570,7 +1570,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("math", __pyx_methods, __pyx_k_Common_math_functions_Constants, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("math", __pyx_methods, __pyx_k_Common_math_functions_for_pygrav, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -1666,7 +1666,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "pygravity/math.pyx":1
- * """Common math functions             # <<<<<<<<<<<<<<
+ * """Common math functions for pygravity             # <<<<<<<<<<<<<<
  * 
  * Constants
  */

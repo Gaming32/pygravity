@@ -1,8 +1,9 @@
 import os
-import sys
-from setuptools import find_packages
-from pkgutil import iter_modules
 import pydoc
+import sys
+from pkgutil import iter_modules
+
+from setuptools import find_packages
 
 
 # Copied from https://stackoverflow.com/questions/48879353/how-do-you-recursively-get-all-submodules-in-a-python-package

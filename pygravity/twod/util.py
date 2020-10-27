@@ -1,6 +1,6 @@
 from typing import List, Optional, Tuple, Union
-from pygravity import twod
 
+from pygravity import twod
 
 __all__ = ['Body', 'BodyWithMetadata', 'capture_simulation']
 
