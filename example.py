@@ -10,6 +10,7 @@ sun = util.Body(container, twod.Vector2(0, 0), 1.9891e30, has_acceptor=False)
 earth = util.Body(container, twod.Vector2(149.4e9, 0), 5.972e24, has_caster=False)
 earth.physics.add_velocity_vector(twod.Vector2(0, -30000))
 
+
 TIME_SCALE = 86400
 # TIME_SCALE = 3600
 try:
