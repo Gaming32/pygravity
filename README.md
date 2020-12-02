@@ -25,7 +25,7 @@ $ python setup.py install
 
 Or install from pip:
 ```shell
-$ python -m pip install pygravity
+$ python -m pip install python-gravity
 ```
 
 # Documentation
