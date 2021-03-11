@@ -30,6 +30,9 @@ $ python -m pip install python-gravity
 
 # Documentation
 
+API documentation can be found at [https://gaming32.github.io/pygravity/](https://gaming32.github.io/pygravity/).
+Following is some short documentation.
+
 Pygravity is made up of a math module (`pygravity.math`) for generic gravity-related math, and a subpackage (`pygravity.twod`) for doing 2D calculations.
 
 For in-depth documentation please install the package and use `pydoc` (`python -m pydoc -b`).
