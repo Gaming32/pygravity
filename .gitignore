@@ -4,7 +4,9 @@ python_gravity.egg-info
 setup.cmd
 **/__pycache__
 pygravity/*.pyd
+pygravity/*.c
 pygravity/*/*.pyd
+pygravity/*/*.c
 cythonize.cmd
 build_exts.cmd
 simulation_*.json
