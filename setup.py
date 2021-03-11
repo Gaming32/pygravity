@@ -5,7 +5,7 @@ with open('README.md') as fp:
 
 setuptools.setup(
     name = 'Python-Gravity',
-    version = '1.0.0.2',
+    version = '1.0.1',
     url = 'https://github.com/gaming32/pygravity',
     author = 'Gaming32',
     author_email = 'gaming32i64@gmail.com',
