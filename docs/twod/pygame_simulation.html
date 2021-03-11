@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>pygravity.twod.pygame_simulation API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pygravity.twod.pygame_simulation</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from typing import Sequence
+
+import pygame
+from pygame import Rect, Surface
+from pygame.constants import MOUSEBUTTONDOWN, QUIT
+
+from pygravity import twod
+from pygravity.twod import util
+
+INT_LIMITS = 256 ** 4 // 2 - 1
+GRAVITY_CONTAINER = twod.GravityContainer()
+
+
+__all__ = [&#39;Settings&#39;, &#39;Body&#39;, &#39;bodies&#39;, &#39;start_simulation&#39;, &#39;register_event_handler&#39;, &#39;visual_radius_from_radius&#39;, &#39;create_surface_from_capture&#39;]
+
+
+class Settings:
+    scale = 778125000
+    time_scale = 1840000
+    screen_size = (1280, 960)
+    background_color = (0, 0, 0)
+    focus = None
+    event_handlers = {}
+
+
+class Camera:
+    position = twod.Vector2()
+    scale = Settings.scale
+
+
+class Body(util.Body):
+    def __init__(self, position, mass, visual_color, visual_radius, has_caster=True, has_acceptor=True):
+        super().__init__(GRAVITY_CONTAINER, position, mass, has_caster, has_acceptor)
+        self.visual_color = visual_color
+        self.visual_radius = visual_radius
+
+    @classmethod
+    def from_metadata(cls, body: util.BodyWithMetadata, *defaults):
+        body = util.BodyWithMetadata.ensure_metadata(body, *defaults)
+        return cls(
+            body.body.position,
+            body.body.mass,
+            body.color,
+            visual_radius_from_radius(body.radius),
+            body.body.caster is not None,
+            body.body.acceptor is not None
+        )
+
+    def update(self, time_passed):
+        self.step(time_passed * Settings.time_scale)
+
+    def render(self, surface: Surface):
+        render_pos = self.get_render_position()
+        if render_pos[0] &lt; -INT_LIMITS or render_pos[0] &gt; INT_LIMITS \
+            or render_pos[1] &lt; -INT_LIMITS or render_pos[1] &gt; INT_LIMITS:
+            return
+        if not self.get_rect().colliderect(Rect((0, 0), Settings.screen_size)):
+            return
+        pygame.draw.circle(surface, self.visual_color, render_pos, self.get_radius())
+
+    def get_radius(self):
+        return int(self.visual_radius * Settings.scale / Camera.scale)
+
+    def get_render_position(self):
+        # render_pos = [c for c in self.position]
+        # render_pos[0] = int(render_pos[0] + 640 * Camera.scale - Camera.position.x) // Camera.scale
+        # render_pos[1] = int(480 - render_pos[1] * Camera.scale + Camera.position.y) // Camera.scale
+        render_pos = list(self.position)
+        # render_pos[0] //= Camera.scale
+        render_pos[0] = (render_pos[0] - Camera.position.x) / Camera.scale + Settings.screen_size[0] / 2
+        # render_pos[1] //= Camera.scale
+        render_pos[1] = Settings.screen_size[1] / 2 - (render_pos[1] - Camera.position.y) / Camera.scale
+        return [int(x) for x in render_pos]
+
+    def get_rect(self):
+        render_pos = self.get_render_position()
+        return Rect(render_pos[0] - self.visual_radius,
+                    render_pos[1] - self.visual_radius,
+                    2 * self.visual_radius,
+                    2 * self.visual_radius)
+
+
+def register_event_handler(func, *events):
+    for event in events:
+        if event not in Settings.event_handlers:
+            Settings.event_handlers[event] = []
+        Settings.event_handlers[event].append(func)
+
+
+bodies = []
+
+
+def start_simulation():
+    Camera.scale = Settings.scale
+
+    pygame.init()
+    screen = pygame.display.set_mode(Settings.screen_size)
+
+    clock = pygame.time.Clock()
+    while True:
+        clock.tick(50)
+
+        for handler in Settings.event_handlers.get(None, []):
+            handler()
+
+        for event in pygame.event.get():
+            for handler in Settings.event_handlers.get(event.type, []):
+                handler(event)
+            if event.type == QUIT:
+                pygame.quit()
+                return
+            elif event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    print(&#39;mouse click:&#39;, end=&#39; &#39;)
+                    for body in bodies:
+                        if body.get_rect().collidepoint(*event.pos):
+                            print(body)
+                            Settings.focus = body
+                            break
+                    else:
+                        print(&#39;space&#39;)
+                        Settings.focus = None
+                        Camera.position.set_to(twod.Vector2())
+                elif event.button == 4:
+                    Camera.scale /= 1.5
+                    print(&#39;zoom in:&#39;, Camera.scale)
+                elif event.button == 5:
+                    Camera.scale *= 1.5
+                    print(&#39;zoom out:&#39;, Camera.scale)
+
+        if Settings.focus is not None:
+            Camera.position.set_to(Settings.focus.position)
+
+        for body in reversed(bodies):
+            body.update(0.02)
+
+        screen.fill(Settings.background_color)
+
+        for body in bodies:
+            body.render(screen)
+
+        pygame.display.update()
+
+
+def visual_radius_from_radius(radius):
+    return radius / Settings.scale
+
+
+def create_surface_from_capture(capture_data: dict, line_thickness=1, render_planets_when: Sequence[int] = (0,)) -&gt; Surface:
+    result = Surface(Settings.screen_size)
+    result.fill(Settings.background_color)
+
+    bodies = {}
+    lines = {}
+    for (name, body_data) in capture_data[&#39;meta&#39;].items():
+        body = Body.__new__(Body)
+        body.visual_color = body_data[&#39;color&#39;]
+        body.visual_radius = visual_radius_from_radius(body_data[&#39;radius&#39;])
+        body.mass = body_data[&#39;mass&#39;]
+        bodies[name] = body
+        if line_thickness:
+            lines[name] = []
+
+    for (i, frame) in enumerate(capture_data[&#39;data&#39;]):
+        render_planets = i in render_planets_when
+        for (body_name, frame_data) in frame.items():
+            body = bodies[body_name]
+            body.position = frame_data[&#39;position&#39;]
+            if render_planets:
+                body.render(result)
+            if line_thickness:
+                lines[body_name].append(body.get_render_position())
+
+    if line_thickness:
+        for (body_name, line_set) in lines.items():
+            body = bodies[body_name]
+            pygame.draw.lines(result, body.visual_color, False, line_set, line_thickness)
+
+    return result</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pygravity.twod.pygame_simulation.create_surface_from_capture"><code class="name flex">
+<span>def <span class="ident">create_surface_from_capture</span></span>(<span>capture_data: dict, line_thickness=1, render_planets_when: Sequence[int] = (0,)) ‑> pygame.Surface</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_surface_from_capture(capture_data: dict, line_thickness=1, render_planets_when: Sequence[int] = (0,)) -&gt; Surface:
+    result = Surface(Settings.screen_size)
+    result.fill(Settings.background_color)
+
+    bodies = {}
+    lines = {}
+    for (name, body_data) in capture_data[&#39;meta&#39;].items():
+        body = Body.__new__(Body)
+        body.visual_color = body_data[&#39;color&#39;]
+        body.visual_radius = visual_radius_from_radius(body_data[&#39;radius&#39;])
+        body.mass = body_data[&#39;mass&#39;]
+        bodies[name] = body
+        if line_thickness:
+            lines[name] = []
+
+    for (i, frame) in enumerate(capture_data[&#39;data&#39;]):
+        render_planets = i in render_planets_when
+        for (body_name, frame_data) in frame.items():
+            body = bodies[body_name]
+            body.position = frame_data[&#39;position&#39;]
+            if render_planets:
+                body.render(result)
+            if line_thickness:
+                lines[body_name].append(body.get_render_position())
+
+    if line_thickness:
+        for (body_name, line_set) in lines.items():
+            body = bodies[body_name]
+            pygame.draw.lines(result, body.visual_color, False, line_set, line_thickness)
+
+    return result</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.register_event_handler"><code class="name flex">
+<span>def <span class="ident">register_event_handler</span></span>(<span>func, *events)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def register_event_handler(func, *events):
+    for event in events:
+        if event not in Settings.event_handlers:
+            Settings.event_handlers[event] = []
+        Settings.event_handlers[event].append(func)</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.start_simulation"><code class="name flex">
+<span>def <span class="ident">start_simulation</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def start_simulation():
+    Camera.scale = Settings.scale
+
+    pygame.init()
+    screen = pygame.display.set_mode(Settings.screen_size)
+
+    clock = pygame.time.Clock()
+    while True:
+        clock.tick(50)
+
+        for handler in Settings.event_handlers.get(None, []):
+            handler()
+
+        for event in pygame.event.get():
+            for handler in Settings.event_handlers.get(event.type, []):
+                handler(event)
+            if event.type == QUIT:
+                pygame.quit()
+                return
+            elif event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    print(&#39;mouse click:&#39;, end=&#39; &#39;)
+                    for body in bodies:
+                        if body.get_rect().collidepoint(*event.pos):
+                            print(body)
+                            Settings.focus = body
+                            break
+                    else:
+                        print(&#39;space&#39;)
+                        Settings.focus = None
+                        Camera.position.set_to(twod.Vector2())
+                elif event.button == 4:
+                    Camera.scale /= 1.5
+                    print(&#39;zoom in:&#39;, Camera.scale)
+                elif event.button == 5:
+                    Camera.scale *= 1.5
+                    print(&#39;zoom out:&#39;, Camera.scale)
+
+        if Settings.focus is not None:
+            Camera.position.set_to(Settings.focus.position)
+
+        for body in reversed(bodies):
+            body.update(0.02)
+
+        screen.fill(Settings.background_color)
+
+        for body in bodies:
+            body.render(screen)
+
+        pygame.display.update()</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.visual_radius_from_radius"><code class="name flex">
+<span>def <span class="ident">visual_radius_from_radius</span></span>(<span>radius)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visual_radius_from_radius(radius):
+    return radius / Settings.scale</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pygravity.twod.pygame_simulation.Body"><code class="flex name class">
+<span>class <span class="ident">Body</span></span>
+<span>(</span><span>position, mass, visual_color, visual_radius, has_caster=True, has_acceptor=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Body(container: GravityContainer, position: Vector2, mass: float, has_caster: bool = True, has_acceptor: bool = True)</p>
+<p>High level class representing everything gravity related about a spatial body</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>position</code></strong> :&ensp;<code>Vector2</code></dt>
+<dd>The current position of the body</dd>
+<dt><strong><code>mass</code></strong> :&ensp;<code>float</code></dt>
+<dd>The body's mass</dd>
+<dt><strong><code>physics</code></strong> :&ensp;<code>PhysicsManager</code></dt>
+<dd>The PhysicsManager responsible for managing the body's velocity</dd>
+<dt><strong><code>caster</code></strong> :&ensp;<code>GravityCaster | None</code></dt>
+<dd>The body's GravityCaster, or None if the body doesn't pull on other bodies</dd>
+<dt><strong><code>acceptor</code></strong> :&ensp;<code>GravityAcceptor | None</code></dt>
+<dd>The body's GravityAcceptor, or None if the body doesn't get pulled on by other bodies</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Body(util.Body):
+    def __init__(self, position, mass, visual_color, visual_radius, has_caster=True, has_acceptor=True):
+        super().__init__(GRAVITY_CONTAINER, position, mass, has_caster, has_acceptor)
+        self.visual_color = visual_color
+        self.visual_radius = visual_radius
+
+    @classmethod
+    def from_metadata(cls, body: util.BodyWithMetadata, *defaults):
+        body = util.BodyWithMetadata.ensure_metadata(body, *defaults)
+        return cls(
+            body.body.position,
+            body.body.mass,
+            body.color,
+            visual_radius_from_radius(body.radius),
+            body.body.caster is not None,
+            body.body.acceptor is not None
+        )
+
+    def update(self, time_passed):
+        self.step(time_passed * Settings.time_scale)
+
+    def render(self, surface: Surface):
+        render_pos = self.get_render_position()
+        if render_pos[0] &lt; -INT_LIMITS or render_pos[0] &gt; INT_LIMITS \
+            or render_pos[1] &lt; -INT_LIMITS or render_pos[1] &gt; INT_LIMITS:
+            return
+        if not self.get_rect().colliderect(Rect((0, 0), Settings.screen_size)):
+            return
+        pygame.draw.circle(surface, self.visual_color, render_pos, self.get_radius())
+
+    def get_radius(self):
+        return int(self.visual_radius * Settings.scale / Camera.scale)
+
+    def get_render_position(self):
+        # render_pos = [c for c in self.position]
+        # render_pos[0] = int(render_pos[0] + 640 * Camera.scale - Camera.position.x) // Camera.scale
+        # render_pos[1] = int(480 - render_pos[1] * Camera.scale + Camera.position.y) // Camera.scale
+        render_pos = list(self.position)
+        # render_pos[0] //= Camera.scale
+        render_pos[0] = (render_pos[0] - Camera.position.x) / Camera.scale + Settings.screen_size[0] / 2
+        # render_pos[1] //= Camera.scale
+        render_pos[1] = Settings.screen_size[1] / 2 - (render_pos[1] - Camera.position.y) / Camera.scale
+        return [int(x) for x in render_pos]
+
+    def get_rect(self):
+        render_pos = self.get_render_position()
+        return Rect(render_pos[0] - self.visual_radius,
+                    render_pos[1] - self.visual_radius,
+                    2 * self.visual_radius,
+                    2 * self.visual_radius)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pygravity.twod.util.Body</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pygravity.twod.pygame_simulation.Body.acceptor"><code class="name">var <span class="ident">acceptor</span> : Optional[pygravity.twod.gravity.GravityAcceptor]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.caster"><code class="name">var <span class="ident">caster</span> : Optional[pygravity.twod.gravity.GravityCaster]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.mass"><code class="name">var <span class="ident">mass</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.physics"><code class="name">var <span class="ident">physics</span> : pygravity.twod.physics.PhysicsManager</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.position"><code class="name">var <span class="ident">position</span> : pygravity.twod.vector.Vector2</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="pygravity.twod.pygame_simulation.Body.from_metadata"><code class="name flex">
+<span>def <span class="ident">from_metadata</span></span>(<span>body: pygravity.twod.util.BodyWithMetadata, *defaults)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_metadata(cls, body: util.BodyWithMetadata, *defaults):
+    body = util.BodyWithMetadata.ensure_metadata(body, *defaults)
+    return cls(
+        body.body.position,
+        body.body.mass,
+        body.color,
+        visual_radius_from_radius(body.radius),
+        body.body.caster is not None,
+        body.body.acceptor is not None
+    )</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pygravity.twod.pygame_simulation.Body.get_radius"><code class="name flex">
+<span>def <span class="ident">get_radius</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_radius(self):
+    return int(self.visual_radius * Settings.scale / Camera.scale)</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.get_rect"><code class="name flex">
+<span>def <span class="ident">get_rect</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_rect(self):
+    render_pos = self.get_render_position()
+    return Rect(render_pos[0] - self.visual_radius,
+                render_pos[1] - self.visual_radius,
+                2 * self.visual_radius,
+                2 * self.visual_radius)</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.get_render_position"><code class="name flex">
+<span>def <span class="ident">get_render_position</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_render_position(self):
+    # render_pos = [c for c in self.position]
+    # render_pos[0] = int(render_pos[0] + 640 * Camera.scale - Camera.position.x) // Camera.scale
+    # render_pos[1] = int(480 - render_pos[1] * Camera.scale + Camera.position.y) // Camera.scale
+    render_pos = list(self.position)
+    # render_pos[0] //= Camera.scale
+    render_pos[0] = (render_pos[0] - Camera.position.x) / Camera.scale + Settings.screen_size[0] / 2
+    # render_pos[1] //= Camera.scale
+    render_pos[1] = Settings.screen_size[1] / 2 - (render_pos[1] - Camera.position.y) / Camera.scale
+    return [int(x) for x in render_pos]</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.render"><code class="name flex">
+<span>def <span class="ident">render</span></span>(<span>self, surface: pygame.Surface)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def render(self, surface: Surface):
+    render_pos = self.get_render_position()
+    if render_pos[0] &lt; -INT_LIMITS or render_pos[0] &gt; INT_LIMITS \
+        or render_pos[1] &lt; -INT_LIMITS or render_pos[1] &gt; INT_LIMITS:
+        return
+    if not self.get_rect().colliderect(Rect((0, 0), Settings.screen_size)):
+        return
+    pygame.draw.circle(surface, self.visual_color, render_pos, self.get_radius())</code></pre>
+</details>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Body.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, time_passed)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, time_passed):
+    self.step(time_passed * Settings.time_scale)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Settings"><code class="flex name class">
+<span>class <span class="ident">Settings</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Settings:
+    scale = 778125000
+    time_scale = 1840000
+    screen_size = (1280, 960)
+    background_color = (0, 0, 0)
+    focus = None
+    event_handlers = {}</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="pygravity.twod.pygame_simulation.Settings.background_color"><code class="name">var <span class="ident">background_color</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Settings.event_handlers"><code class="name">var <span class="ident">event_handlers</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Settings.focus"><code class="name">var <span class="ident">focus</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Settings.scale"><code class="name">var <span class="ident">scale</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Settings.screen_size"><code class="name">var <span class="ident">screen_size</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygravity.twod.pygame_simulation.Settings.time_scale"><code class="name">var <span class="ident">time_scale</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="pygravity.twod.pygame_simulation.create_surface_from_capture" href="#pygravity.twod.pygame_simulation.create_surface_from_capture">create_surface_from_capture</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.register_event_handler" href="#pygravity.twod.pygame_simulation.register_event_handler">register_event_handler</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.start_simulation" href="#pygravity.twod.pygame_simulation.start_simulation">start_simulation</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.visual_radius_from_radius" href="#pygravity.twod.pygame_simulation.visual_radius_from_radius">visual_radius_from_radius</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pygravity.twod.pygame_simulation.Body" href="#pygravity.twod.pygame_simulation.Body">Body</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pygravity.twod.pygame_simulation.Body.acceptor" href="#pygravity.twod.pygame_simulation.Body.acceptor">acceptor</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.caster" href="#pygravity.twod.pygame_simulation.Body.caster">caster</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.from_metadata" href="#pygravity.twod.pygame_simulation.Body.from_metadata">from_metadata</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.get_radius" href="#pygravity.twod.pygame_simulation.Body.get_radius">get_radius</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.get_rect" href="#pygravity.twod.pygame_simulation.Body.get_rect">get_rect</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.get_render_position" href="#pygravity.twod.pygame_simulation.Body.get_render_position">get_render_position</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.mass" href="#pygravity.twod.pygame_simulation.Body.mass">mass</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.physics" href="#pygravity.twod.pygame_simulation.Body.physics">physics</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.position" href="#pygravity.twod.pygame_simulation.Body.position">position</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.render" href="#pygravity.twod.pygame_simulation.Body.render">render</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Body.update" href="#pygravity.twod.pygame_simulation.Body.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pygravity.twod.pygame_simulation.Settings" href="#pygravity.twod.pygame_simulation.Settings">Settings</a></code></h4>
+<ul class="two-column">
+<li><code><a title="pygravity.twod.pygame_simulation.Settings.background_color" href="#pygravity.twod.pygame_simulation.Settings.background_color">background_color</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Settings.event_handlers" href="#pygravity.twod.pygame_simulation.Settings.event_handlers">event_handlers</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Settings.focus" href="#pygravity.twod.pygame_simulation.Settings.focus">focus</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Settings.scale" href="#pygravity.twod.pygame_simulation.Settings.scale">scale</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Settings.screen_size" href="#pygravity.twod.pygame_simulation.Settings.screen_size">screen_size</a></code></li>
+<li><code><a title="pygravity.twod.pygame_simulation.Settings.time_scale" href="#pygravity.twod.pygame_simulation.Settings.time_scale">time_scale</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
