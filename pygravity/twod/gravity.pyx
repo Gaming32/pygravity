@@ -41,7 +41,7 @@ List optimized for GravityCaster objects"""
 
 Adds a caster to this containter"""
         self.size += 1
-        self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+        self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
         if self.casters == NULL:
             raise MemoryError()
         Py_INCREF(caster)
@@ -51,7 +51,7 @@ Adds a caster to this containter"""
         cdef int start = self.size, i
         cdef GravityCaster caster
         self.size += length
-        self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+        self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
         if self.casters == NULL:
             raise MemoryError()
         for i in range(length):
@@ -72,7 +72,7 @@ Adds multiple casters to this container (potentially slower than add_caster)"""
         for ix in range(i, self.size - 1):
             self.casters[ix] = self.casters[ix + 1]
         self.size -= 1
-        self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+        self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
         if self.casters == NULL:
             raise MemoryError()
 

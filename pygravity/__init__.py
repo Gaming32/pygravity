@@ -2,5 +2,5 @@
 It is written in Cython, for speed."""
 
 
-__version__ = '1.0.0'
+__version__ = '1.0.2'
 __author__ = 'Gaming32'

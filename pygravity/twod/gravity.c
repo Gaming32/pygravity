@@ -2067,7 +2067,7 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster(stru
  * 
  * Adds a caster to this containter"""
  *         self.size += 1             # <<<<<<<<<<<<<<
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:
  */
   __pyx_v_self->size = (__pyx_v_self->size + 1);
@@ -2075,15 +2075,15 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster(stru
   /* "pygravity/twod/gravity.pyx":44
  * Adds a caster to this containter"""
  *         self.size += 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)             # <<<<<<<<<<<<<<
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))             # <<<<<<<<<<<<<<
  *         if self.casters == NULL:
  *             raise MemoryError()
  */
-  __pyx_v_self->casters = ((PyObject **)PyMem_Realloc(__pyx_v_self->casters, __pyx_v_self->size));
+  __pyx_v_self->casters = ((PyObject **)PyMem_Realloc(__pyx_v_self->casters, (__pyx_v_self->size * (sizeof(PyObject *)))));
 
   /* "pygravity/twod/gravity.pyx":45
  *         self.size += 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:             # <<<<<<<<<<<<<<
  *             raise MemoryError()
  *         Py_INCREF(caster)
@@ -2092,7 +2092,7 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster(stru
   if (unlikely(__pyx_t_5)) {
 
     /* "pygravity/twod/gravity.pyx":46
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:
  *             raise MemoryError()             # <<<<<<<<<<<<<<
  *         Py_INCREF(caster)
@@ -2102,7 +2102,7 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster(stru
 
     /* "pygravity/twod/gravity.pyx":45
  *         self.size += 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:             # <<<<<<<<<<<<<<
  *             raise MemoryError()
  *         Py_INCREF(caster)
@@ -2233,7 +2233,7 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster_arra
  *         cdef int start = self.size, i
  *         cdef GravityCaster caster
  *         self.size += length             # <<<<<<<<<<<<<<
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:
  */
   __pyx_v_self->size = (__pyx_v_self->size + __pyx_v_length);
@@ -2241,15 +2241,15 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster_arra
   /* "pygravity/twod/gravity.pyx":54
  *         cdef GravityCaster caster
  *         self.size += length
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)             # <<<<<<<<<<<<<<
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))             # <<<<<<<<<<<<<<
  *         if self.casters == NULL:
  *             raise MemoryError()
  */
-  __pyx_v_self->casters = ((PyObject **)PyMem_Realloc(__pyx_v_self->casters, __pyx_v_self->size));
+  __pyx_v_self->casters = ((PyObject **)PyMem_Realloc(__pyx_v_self->casters, (__pyx_v_self->size * (sizeof(PyObject *)))));
 
   /* "pygravity/twod/gravity.pyx":55
  *         self.size += length
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:             # <<<<<<<<<<<<<<
  *             raise MemoryError()
  *         for i in range(length):
@@ -2258,7 +2258,7 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster_arra
   if (unlikely(__pyx_t_2)) {
 
     /* "pygravity/twod/gravity.pyx":56
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:
  *             raise MemoryError()             # <<<<<<<<<<<<<<
  *         for i in range(length):
@@ -2268,7 +2268,7 @@ static void __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_add_caster_arra
 
     /* "pygravity/twod/gravity.pyx":55
  *         self.size += length
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:             # <<<<<<<<<<<<<<
  *             raise MemoryError()
  *         for i in range(length):
@@ -2467,7 +2467,7 @@ static int __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_at(struct
  *         for ix in range(i, self.size - 1):
  *             self.casters[ix] = self.casters[ix + 1]             # <<<<<<<<<<<<<<
  *         self.size -= 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  */
     (__pyx_v_self->casters[__pyx_v_ix]) = (__pyx_v_self->casters[(__pyx_v_ix + 1)]);
   }
@@ -2476,7 +2476,7 @@ static int __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_at(struct
  *         for ix in range(i, self.size - 1):
  *             self.casters[ix] = self.casters[ix + 1]
  *         self.size -= 1             # <<<<<<<<<<<<<<
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:
  */
   __pyx_v_self->size = (__pyx_v_self->size - 1);
@@ -2484,15 +2484,15 @@ static int __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_at(struct
   /* "pygravity/twod/gravity.pyx":75
  *             self.casters[ix] = self.casters[ix + 1]
  *         self.size -= 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)             # <<<<<<<<<<<<<<
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))             # <<<<<<<<<<<<<<
  *         if self.casters == NULL:
  *             raise MemoryError()
  */
-  __pyx_v_self->casters = ((PyObject **)PyMem_Realloc(__pyx_v_self->casters, __pyx_v_self->size));
+  __pyx_v_self->casters = ((PyObject **)PyMem_Realloc(__pyx_v_self->casters, (__pyx_v_self->size * (sizeof(PyObject *)))));
 
   /* "pygravity/twod/gravity.pyx":76
  *         self.size -= 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:             # <<<<<<<<<<<<<<
  *             raise MemoryError()
  * 
@@ -2501,7 +2501,7 @@ static int __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_at(struct
   if (unlikely(__pyx_t_5)) {
 
     /* "pygravity/twod/gravity.pyx":77
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:
  *             raise MemoryError()             # <<<<<<<<<<<<<<
  * 
@@ -2511,7 +2511,7 @@ static int __pyx_f_9pygravity_4twod_7gravity_16GravityContainer_remove_at(struct
 
     /* "pygravity/twod/gravity.pyx":76
  *         self.size -= 1
- *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size)
+ *         self.casters = <PyObject **>PyMem_Realloc(self.casters, self.size * sizeof(PyObject *))
  *         if self.casters == NULL:             # <<<<<<<<<<<<<<
  *             raise MemoryError()
  * 
